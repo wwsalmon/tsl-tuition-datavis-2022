@@ -1,0 +1,58 @@
+[
+  {
+    "year": 2021,
+    "rev_students": 33970174,
+    "rev_contributions": 10386742,
+    "rev_endowment": 15659278,
+    "rev_other": 6537950,
+    "exp_instruction": 27736328,
+    "exp_research": 3034949,
+    "exp_service": 686975,
+    "exp_academic_support": 5849769,
+    "exp_student_services": 7953639,
+    "exp_institutional_support": 9929776,
+    "exp_auxiliary_enterprises": 6748440
+  },
+  {
+    "year": 2020,
+    "rev_students": 43722220,
+    "rev_contributions": 9125213,
+    "rev_endowment": 15590224,
+    "rev_other": 7316899,
+    "exp_instruction": 30985460,
+    "exp_research": 3727095,
+    "exp_service": 1008943,
+    "exp_academic_support": 6546072,
+    "exp_student_services": 8366092,
+    "exp_institutional_support": 11265958,
+    "exp_auxiliary_enterprises": 9850756
+  },
+  {
+    "year": 2019,
+    "rev_students": 44863919,
+    "rev_contributions": 12555769,
+    "rev_endowment": 14976981,
+    "rev_other": 6676569,
+    "exp_instruction": 30426186,
+    "exp_research": 4025138,
+    "exp_service": 1075770,
+    "exp_academic_support": 6728053,
+    "exp_student_services": 7860600,
+    "exp_institutional_support": 12039017,
+    "exp_auxiliary_enterprises": 9715111
+  },
+  {
+    "year": 2018,
+    "rev_students": 40766375,
+    "rev_contributions": 18541340,
+    "rev_endowment": 14699783,
+    "rev_other": 6563764,
+    "exp_instruction": 28616839,
+    "exp_research": 3088005,
+    "exp_service": 999387,
+    "exp_academic_support": 6858370,
+    "exp_student_services": 7775031,
+    "exp_institutional_support": 10913435,
+    "exp_auxiliary_enterprises": 9128811
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "year": 2021,
+    "rev_students": 36342024,
+    "rev_contributions": 3738250,
+    "rev_endowment": 5796124,
+    "rev_other": 6160806,
+    "exp_academic": 26567715,
+    "exp_cocurricular": 11702864,
+    "exp_marketing": 5300306,
+    "exp_admin": 7744816,
+    "exp_public": 1174
+  },
+  {
+    "year": 2020,
+    "rev_students": 55473235,
+    "rev_contributions": 4055048,
+    "rev_endowment": 5644885,
+    "rev_other": 3581160,
+    "exp_academic": 31060357,
+    "exp_cocurricular": 15974342,
+    "exp_marketing": 5825075,
+    "exp_admin": 8789075,
+    "exp_public": 378536
+  },
+  {
+    "year": 2019,
+    "rev_students": 54897886,
+    "rev_contributions": 8543518,
+    "rev_endowment": 5612093,
+    "rev_other": 2414274,
+    "exp_academic": 29462143,
+    "exp_cocurricular": 15757439,
+    "exp_marketing": 6646539,
+    "exp_admin": 9607462,
+    "exp_public": 564643
+  },
+  {
+    "year": 2018,
+    "rev_students": 52584203,
+    "rev_contributions": 3939451,
+    "rev_endowment": 5512323,
+    "rev_other": 2309391,
+    "exp_academic": 30220067,
+    "exp_cocurricular": 16106046,
+    "exp_marketing": 6169092,
+    "exp_admin": 8420482,
+    "exp_public": 766971
+  },
+  {
+    "year": 2017,
+    "rev_students": 50083941,
+    "rev_contributions": 4045432,
+    "rev_endowment": 5415611,
+    "rev_other": 2495296,
+    "exp_academic": 28647557,
+    "exp_cocurricular": 16373447,
+    "exp_marketing": 6238046,
+    "exp_admin": 8013742,
+    "exp_public": 570223
+  },
+  {
+    "year": 2016,
+    "rev_students": 50288649,
+    "rev_contributions": 3287198,
+    "rev_endowment": 5277474,
+    "rev_other": 1581962,
+    "exp_academic": 28171042,
+    "exp_cocurricular": 16208104,
+    "exp_marketing": 6199698,
+    "exp_admin": 7074501,
+    "exp_public": 490065
+  },
+  {
+    "year": 2015,
+    "rev_students": 49936405,
+    "rev_contributions": 7129716,
+    "rev_endowment": 4889430,
+    "rev_other": 1637919,
+    "exp_academic": 27374767,
+    "exp_cocurricular": 15545417,
+    "exp_marketing": 6248623,
+    "exp_admin": 7111597,
+    "exp_public": 1059273
+  },
+  {
+    "year": 2014,
+    "rev_students": 48881168,
+    "rev_contributions": 5853858,
+    "rev_endowment": 4482584,
+    "rev_other": 1607043,
+    "exp_academic": 26425615,
+    "exp_cocurricular": 14920368,
+    "exp_marketing": 5977538,
+    "exp_admin": 7492356,
+    "exp_public": 1078623
+  }
+]

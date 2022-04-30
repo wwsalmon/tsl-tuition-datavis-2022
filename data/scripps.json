@@ -1,0 +1,90 @@
+[
+  {
+    "year": 2021,
+    "rev_students": 35534963,
+    "rev_contributions": 9471102,
+    "rev_endowment": 24040361,
+    "rev_other": 879199,
+    "exp_academic": 28150669,
+    "exp_cocurricular": 16362072,
+    "exp_marketing": 7792772,
+    "exp_admin": 8925215
+  },
+  {
+    "year": 2020,
+    "rev_students": 55605541,
+    "rev_contributions": 7446442,
+    "rev_endowment": 16885887,
+    "rev_other": 2608705,
+    "exp_academic": 35856229,
+    "exp_cocurricular": 22690006,
+    "exp_marketing": 8481955,
+    "exp_admin": 10208304
+  },
+  {
+    "year": 2019,
+    "rev_students": 56033876,
+    "rev_contributions": 13032814,
+    "rev_endowment": 16460761,
+    "rev_other": 1083781,
+    "exp_academic": 34051600,
+    "exp_cocurricular": 22445869,
+    "exp_marketing": 7943856,
+    "exp_admin": 8240873
+  },
+  {
+    "year": 2018,
+    "rev_students": 53927588,
+    "rev_contributions": 15279594,
+    "rev_endowment": 15989375,
+    "rev_other": 1096420,
+    "exp_academic": 34079958,
+    "exp_cocurricular": 21152480,
+    "exp_marketing": 8021799,
+    "exp_admin": 7960922
+  },
+  {
+    "year": 2017,
+    "rev_students": 51019174,
+    "rev_contributions": 11686757,
+    "rev_endowment": 16433933,
+    "rev_other": 1250134,
+    "exp_academic": 33049320,
+    "exp_cocurricular": 19510520,
+    "exp_marketing": 8044629,
+    "exp_admin": 7237161
+  },
+  {
+    "year": 2016,
+    "rev_students": 45465380,
+    "rev_contributions": 8071463,
+    "rev_endowment": 15834363,
+    "rev_other": 984173,
+    "exp_academic": 32279943,
+    "exp_cocurricular": 18468211,
+    "exp_marketing": 7908720,
+    "exp_admin": 7385300
+  },
+  {
+    "year": 2015,
+    "rev_students": 43551713,
+    "rev_contributions": 22119302,
+    "rev_endowment": 14739594,
+    "rev_other": 876459,
+    "exp_academic": 29779443,
+    "exp_cocurricular": 16834157,
+    "exp_marketing": 7480507,
+    "exp_admin": 7110131
+  },
+  {
+    "year": 2014,
+    "rev_students": 42052505,
+    "rev_contributions": 12193449,
+    "rev_endowment": 14688915,
+    "rev_other": 746473,
+    "exp_academic": 29494373,
+    "exp_cocurricular": 16184006,
+    "exp_marketing": 7635260,
+    "exp_admin": 6754989
+  }
+]
