@@ -6,33 +6,7 @@
 
 [/FullWidth]
 
-[div style:`{textAlign: "center", margin: "256px 0"}`]
-
-[h1 className:"font-lora" style:`{fontSize: 64, textAlign: "center"}`]THE COST OF INCREASING COSTS[/h1]
-
-[p style:`{fontSize: 28}`]Accounting for tuition increases at the 5Cs[/p]
-
-[LineBreak/]
-
-[p]*Contents*[/p]
-
-[p][Tuition and inflation](#inflation)[/p]
-
-[p][How do the 5Cs make money?](#revenue)[/p]
-
-[p][How do the 5Cs spend money?](#expenses)[/p]
-
-[p][Tuition and financial aid](#finaid)[/p]
-
-[LineBreak/]
-
-Reporting by [Samson Zhang](https://tsl.news/author/samson-zhang/), [Rya Jetha](https://tsl.news/author/rya-jetha/), [Mariana Duran](https://tsl.news/author/mariana-duran/), [Reia Li](https://tsl.news/author/reia-li), [Jenna McMurtry](https://tsl.news/author/jennamcmurtry/), [Ava Francis-Hall](https://tsl.news/author/afrancisstudents-pitzer-edu/) and [Julia Schwartz](https://tsl.news/author/juliaschwartz/)
-
-April 29, 2022
-
-[/div]
-
-[p style:`{fontSize: 42, marginBottom: 64}`]
+[p style:`{fontSize: 42, marginTop: 96, marginBottom: 64}`]
 If she was able to put her academic interests first, Michelle Lee PO ‘25 would have likely majored in philosophy.
 [/p]
 
@@ -48,9 +22,17 @@ But owing to the "burden of having \[a\] family contribution being higher than \
 
 “Pursuing your intellectual curiosity is an essential part of college,” she said. But to manage the financial restraints of a Pomona education Lee felt that she has no other choice than to view her college experience through an economical standpoint, and has wondered how she might have directed her college studies differently if she wasn’t burdened by financial stressors.
 
-[LineBreak/]
+[div style:`{textAlign: "center", margin: "192px 0"}`]
 
-## Why is tuition going up?
+[h1 className:"font-lora" style:`{fontSize: 64, textAlign: "center"}`]THE COST OF INCREASING COSTS[/h1]
+
+[p style:`{fontSize: 28, marginBottom: 32}`]Accounting for tuition increases at the 5Cs[/p]
+
+Reporting by [Samson Zhang](https://tsl.news/author/samson-zhang/), [Rya Jetha](https://tsl.news/author/rya-jetha/), [Mariana Duran](https://tsl.news/author/mariana-duran/), [Reia Li](https://tsl.news/author/reia-li), [Jenna McMurtry](https://tsl.news/author/jennamcmurtry/), [Ava Francis-Hall](https://tsl.news/author/afrancisstudents-pitzer-edu/) and [Julia Schwartz](https://tsl.news/author/juliaschwartz/)
+
+April 29, 2022
+
+[/div]
 
 Earlier this semester, Pomona College, Claremont McKenna College and Pitzer College announced plans to increase their respective tuition by 4.5 percent for the upcoming 2022-23 school year. Scripps College will follow suit with an increase to its tuition by 3.9 percent.
 
@@ -103,6 +85,12 @@ Data for the graphics in this piece were collected from "Statement of Activity" 
 Each 5C school publishes annual, audited financial statements that break down the school's revenue sources and spending that year.
 
 **TSL reviewed the past eight years of reports** to investigate exactly what costs are increasing, and how the burden falls on students.
+
+[LineBreak/]
+
+## How do the 5Cs spend money?
+
+[ReTreemap school:"pomona" year:2020/]
 
 [LineBreak/]
 
@@ -179,5 +167,3 @@ This is because the amount of financial aid provided has increased along with tu
     [ReLineChart fields:`["tuition", "finaid", "nat"]` school:finaidSchool isCum:true/]
 
 [/div]
-
-## How do the 5Cs spend money?
