@@ -14,7 +14,19 @@
 
 [LineBreak/]
 
-Reporting by Samson Zhang, Rya Jetha, Mariana Duran, Reia Li, Jenna McMurtry, Ava Francis-Hall and Julia Schwarz
+[p]*Contents*[/p]
+
+[p][Tuition and inflation](#inflation)[/p]
+
+[p][How do the 5Cs make money?](#revenue)[/p]
+
+[p][How do the 5Cs spend money?](#expenses)[/p]
+
+[p][Tuition and financial aid](#finaid)[/p]
+
+[LineBreak/]
+
+Reporting by [Samson Zhang](https://tsl.news/author/samson-zhang/), [Rya Jetha](https://tsl.news/author/rya-jetha/), [Mariana Duran](https://tsl.news/author/mariana-duran/), [Reia Li](https://tsl.news/author/reia-li), [Jenna McMurtry](https://tsl.news/author/jennamcmurtry/), [Ava Francis-Hall](https://tsl.news/author/afrancisstudents-pitzer-edu/) and [Julia Schwartz](https://tsl.news/author/juliaschwartz/)
 
 April 29, 2022
 
@@ -37,6 +49,8 @@ But owing to the "burden of having \[a\] family contribution being higher than \
 “Pursuing your intellectual curiosity is an essential part of college,” she said. But to manage the financial restraints of a Pomona education Lee felt that she has no other choice than to view her college experience through an economical standpoint, and has wondered how she might have directed her college studies differently if she wasn’t burdened by financial stressors.
 
 [LineBreak/]
+
+## Why is tuition going up?
 
 Earlier this semester, Pomona College, Claremont McKenna College and Pitzer College announced plans to increase their respective tuition by 4.5 percent for the upcoming 2022-23 school year. Scripps College will follow suit with an increase to its tuition by 3.9 percent.
 
@@ -80,9 +94,23 @@ When asked about why their respective colleges decide to increase tuition by mor
 
 Each 5C school publishes annual, audited financial statements that break down the school's revenue sources and spending that year.
 
-Among revenue sources, net student revenue, endowment income and donations and grants are the top three categories at all five 5C schools.
+[Aside style:`{fontSize: 14}`]
 
-At Scripps, Pitzer and HMC, net student revenue — the cost of tuition, room and board for each student minus the financial aid provided to them — makes up the majority of the school’s revenue.
+The reports are available as PDFs here: [CMC](https://www.cmc.edu/treasurer/annual-reports) • [HMC](https://www.hmc.edu/bao/financial-affairs/) • [Pitzer](https://www.pitzer.edu/treasurer/documents-policies/) • [Pomona](https://www.pomona.edu/administration/treasurer/financial-statements) • [Scripps](https://www.scrippscollege.edu/about/glance/financial-reports)
+
+Data for the graphics in this piece were collected from "Statement of Activity" pages in each report.
+
+[/Aside]
+
+![A screenshot from Pomona College's 2020-21 financial statement](static/statement-sc.png)
+
+**TSL reviewed the past eight years of reports** to investigate exactly what costs are increasing, and how the burden falls on students.
+
+[LineBreak/]
+
+## How do the 5Cs make money?
+
+Among revenue sources, **net student revenue, endowment income and donations and grants** are the top three categories at all five 5C schools.
 
 [FullWidth style:`{display: "flex", margin: "96px 0"}`]
     [Treemap school:"scripps" year:2020 style:`{width: "33%"}` viewWidth:350 highlight:"rev_students" totalScale:150000000/]
@@ -90,18 +118,25 @@ At Scripps, Pitzer and HMC, net student revenue — the cost of tuition, room an
     [Treemap school:"pitzer" year:2020 style:`{width: "33%"}` viewWidth:350 highlight:"rev_students" totalScale:150000000/]
 [/FullWidth]
 
+At Scripps, Pitzer and HMC, net student revenue — **the cost of tuition, room and board for each student minus the financial aid provided to them** — makes up the majority of the school’s revenue.
+
 According to Goldberg, this makes them “tuition-dependent schools” for whom increasing tuition is the primary way to offset increasing expenses.
 
-Each school also receives an income each year from their endowment funds. This income is equivalent to about 4% of a four-year rolling average of the endowment fund’s value at each of the 5C schools, though the exact percentage varies by school.
-
-Having the biggest endowments, Pomona and CMC receive the most income from endowment spending policies each year. Pomona receives more revenue from its spending policy than from net student revenue, while CMC receives about two-thirds as much from its spending policy than net student revenue.
-
+Each school also **receives an income each year from their endowment funds**. This income is equivalent to about **4% of a four-year rolling average** of the endowment fund’s value at each of the 5C schools, though the exact percentage varies by school.
 
 [FullWidth className:"two-col-parent" style:`{margin: "96px 0"}`]
     [Treemap school:"cmc" year:2020 style:`{width: "60%"}` viewWidth:600 highlight:"rev_endowment" highlightColor:"#BE3232"/]
     [Treemap school:"pomona" year:2020 style:`{width: "40%"}` viewWidth:400 highlight:"rev_endowment" highlightColor:"#BE3232"/]
 [/FullWidth]
 
-Endowment-dependent schools can allow the burden of increasing expenses to fall less on student revenue compared to tuition-dependent schools, Goldberg said.
+Having the biggest endowments, Pomona and CMC receive the most income from endowment spending policies each year.
 
-Yet Pomona and CMC have seen the largest and third-largest increases in tuition by percentage, respectively, among the 5Cs.
+**Private gifts and grants** are the third major revenue source for the 5Cs. At CMC, they’ve been the largest nominal revenue source for all but two of the school years ending 2014-2021.
+
+This income is often restricted, however, meaning that **they can only be spent for specific purposes,** such as on a certain program or facility.
+
+Other revenue is received through federal and private contracts and non-endowment investment income, which are represented in different ways on different schools’ financial statements and condensed into an “other revenue” category here.
+
+[LineBreak/]
+
+## How do the 5Cs spend money?
