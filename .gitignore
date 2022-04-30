@@ -58,7 +58,6 @@ typings/
 .env
 
 .idyll
-build
 
 # other
 .DS_Store
