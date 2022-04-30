@@ -117,8 +117,6 @@ class TopComponent extends D3Component {
             .y(d => cumScale(d.cum))
             .curve(d3.curveMonotoneX);
 
-        console.log(line(cumSeries[0]));
-
         const cumLines = chart.selectAll("line.cumLine").data([...cumSeries.slice(0,5), cumSeries[7]]).enter()
             .append("path")
             .attr("d", x => line(x.filter(y => y.cum !== null)))

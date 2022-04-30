@@ -1,35 +1,7 @@
 import React from 'react';
 import D3Component from 'idyll-d3-component';
 import * as d3 from 'd3';
-
-import data_scripps from "../data/scripps.json" assert {type: "json"};
-import data_pomona from "../data/pomona.json" assert {type: "json"};
-import data_cmc from "../data/cmc.json" assert {type: "json"};
-import data_hmc from "../data/hmc.json" assert {type: "json"};
-import data_pitzer from "../data/pitzer.json" assert {type: "json"};
-
-const allData = {
-    scripps: data_scripps,
-    pomona: data_pomona,
-    cmc: data_cmc,
-    hmc: data_hmc,
-    pitzer: data_pitzer,
-}
-
-const labels = {
-    rev_other: "Other revenue*",
-    rev_students: "Net student revenue",
-    rev_endowment: "Endowment income",
-    rev_contributions: "Donations and grants"
-}
-
-const schoolLabels = {
-    scripps: "Scripps College",
-    pomona: "Pomona College",
-    cmc: "Claremont McKenna College",
-    hmc: "Harvey Mudd College",
-    pitzer: "Pitzer College",
-}
+import {allData, dataLabels, schoolLabels} from "../utils/data.js";
 
 class Treemap extends D3Component {
     initialize(node, props) {
@@ -83,7 +55,7 @@ class Treemap extends D3Component {
             .attr("fill", d => (d.data.name === highlight) ? (highlightColor || "#3274BE") : "#222");
 
         cells.append("text")
-            .text(d => labels[d.data.name])
+            .text(d => dataLabels[d.data.name])
             .attr("fill", "white")
             .style("font-weight", 700)
             .style("font-size", 12)
