@@ -14,7 +14,7 @@ export const allData = {
 
 export const tAndCLabels = ["tuition", "la", "nat", "ca", "hepi"];
 
-export const aggLabels = ["rev_cleaned", "rev_all"];
+export const aggLabels = ["rev_cleaned", "rev_all", "rev_wo_gifts"];
 
 export const schoolLabels = {
     scripps: "Scripps College",
@@ -47,5 +47,6 @@ export const dataLabels = {
     hepi: "Higher Education Price Index",
     rev_cleaned: "Revenue without stu. rev. or gifts",
     rev_all: "Total revenue",
+    finaid: "Financial aid",
     ...schoolLabels,
 }

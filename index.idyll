@@ -56,11 +56,11 @@ Earlier this semester, Pomona College, Claremont McKenna College and Pitzer Coll
 
 Since the 2013-14 school year, tuition has increased by more than 29 percent at each of the 5Cs, outpacing national, Los Angeles County and California inflation rates.
 
-[FullWidth style:`{margin: "96px 0"}`]
+[div style:`{margin: "96px 0"}`]
 
-![](/static/tuition-vs-cpi.png)
+[ReLineChart fields:`["tuition","la","nat","ca"]` isCum:true numYears:10/]
 
-[/FullWidth]
+[/div]
 
 When asked about why their respective colleges decide to increase tuition by more than inflation in many years, college spokespeople pointed to rising expenses in categories ranging from faculty salaries to residence hall renovations.
 
@@ -92,8 +92,6 @@ When asked about why their respective colleges decide to increase tuition by mor
     [/TwoColChild]
 [/FullWidth]
 
-Each 5C school publishes annual, audited financial statements that break down the school's revenue sources and spending that year.
-
 [Aside style:`{fontSize: 14}`]
 
 The reports are available as PDFs here: [CMC](https://www.cmc.edu/treasurer/annual-reports) • [HMC](https://www.hmc.edu/bao/financial-affairs/) • [Pitzer](https://www.pitzer.edu/treasurer/documents-policies/) • [Pomona](https://www.pomona.edu/administration/treasurer/financial-statements) • [Scripps](https://www.scrippscollege.edu/about/glance/financial-reports)
@@ -102,7 +100,7 @@ Data for the graphics in this piece were collected from "Statement of Activity" 
 
 [/Aside]
 
-![A screenshot from Pomona College's 2020-21 financial statement](static/statement-sc.png)
+Each 5C school publishes annual, audited financial statements that break down the school's revenue sources and spending that year.
 
 **TSL reviewed the past eight years of reports** to investigate exactly what costs are increasing, and how the burden falls on students.
 
@@ -120,8 +118,6 @@ Among revenue sources, **net student revenue, endowment income and donations and
 
 At Scripps, Pitzer and HMC, net student revenue — **the cost of tuition, room and board for each student minus the financial aid provided to them** — makes up the majority of the school’s revenue.
 
-According to Goldberg, this makes them “tuition-dependent schools” for whom increasing tuition is the primary way to offset increasing expenses.
-
 Each school also **receives an income each year from their endowment funds**. This income is equivalent to about **4% of a four-year rolling average** of the endowment fund’s value at each of the 5C schools, though the exact percentage varies by school.
 
 [FullWidth className:"two-col-parent" style:`{margin: "96px 0"}`]
@@ -137,22 +133,51 @@ This income is often restricted, however, meaning that **they can only be spent 
 
 Other revenue is received through federal and private contracts and non-endowment investment income, which are represented in different ways on different schools’ financial statements and condensed into an “other revenue” category here.
 
+[LineBreak/]
 
+[Aside style:`{fontSize: 14}`]
+† Donations and grants excluded because they vary dramatically year-to-year.
+[/Aside]
 
-**Total revenue**
-[ReLineChart fields:`["rev_all"]` formatString:".4s"/]
+**Revenue without gifts (†) increased more than inflation** at all five 5C schools from 2013-14 to 2019-20, only dropping in 2020-21 because of reduced enrollment due to the COVID pandemic.
 
 [FullWidth className:"two-col-parent" style:`{maxWidth: 900, margin: "96px auto"}`]
     [TwoColChild]
-        **Total revenue, minus gifts and net stu. rev.**
-        [ReLineChart fields:`["rev_cleaned"]` formatString:".4s"/]
+        [ChartTitle]
+        **Revenue without gifts**
+        [/ChartTitle]
+        [ReLineChart fields:`["rev_wo_gifts"]` formatString:".4s"/]
     [/TwoColChild]
     [TwoColChild]
-        **Total revenue, minus... change since 2013-14**
-        [ReLineChart fields:`["rev_cleaned", "nat", "la"]` isCum:`true`/]
+        [ChartTitle]
+        *Change since 2013-14*
+        [/ChartTitle]
+        [ReLineChart fields:`["rev_wo_gifts", "nat"]` isCum:`true`/]
     [/TwoColChild]
 [/FullWidth]
 
-[LineBreak/]
+At all 5C schools except for Scripps College, **endowment income increased by a much greater percentage than net student revenue** from 2013-14 to 2019-20.
+
+[div style:`{margin: "96px 0"}`]
+
+    [var name:"incomeSchool" value:"pomona" /]
+
+    [ChartTitle]Change in **endowment income vs. net student revenue** since 2013-14 for [Select value:incomeSchool options:`["cmc", "hmc", "pitzer", "pomona", "scripps"]` /][/ChartTitle]
+
+    [ReLineChart fields:`["rev_endowment", "rev_students", "tuition", "nat"]` school:incomeSchool isCum:true/]
+
+[/div]
+
+This is because the amount of financial aid provided has increased along with tuition. At every 5C school except Scripps College, the amount of financial aid provided increased at a faster rate than tuition from 2013-14 to 2019-20.
+
+[div style:`{margin: "96px 0"}`]
+
+    [var name:"finaidSchool" value:"pomona" /]
+
+    [ChartTitle]Change in **financial aid vs. tuition** since 2013-14 for [Select value:finaidSchool options:`["cmc", "hmc", "pitzer", "pomona", "scripps"]` /][/ChartTitle]
+
+    [ReLineChart fields:`["tuition", "finaid", "nat"]` school:finaidSchool isCum:true/]
+
+[/div]
 
 ## How do the 5Cs spend money?
