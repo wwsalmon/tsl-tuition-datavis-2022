@@ -33,4 +33,4 @@ export default function calculateChange(arr, excludedFields) {
     })
 }
 
-const isNullOrUndefined = d => d === null || d === undefined;
+const isNullOrUndefined = d => d === null || d === undefined || d === "";

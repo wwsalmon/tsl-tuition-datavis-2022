@@ -2,7 +2,7 @@ import React from 'react';
 import D3Component from 'idyll-d3-component';
 import * as d3 from 'd3';
 import tuitionAndCpiData from "../data/tuition-and-cpi.json";
-import {allData, dataLabels, tAndCLabels} from "../utils/data.js";
+import {aggLabels, allData, dataLabels, tAndCLabels} from "../utils/data.js";
 import calculateChange from "../utils/calculateChange.js";
 
 const width = 600;
@@ -21,7 +21,7 @@ class LineChart extends D3Component {
 
         let data = thisSchoolData.map(d => fields.reduce((a, b) => {
             let retval = {...a};
-            if (tAndCLabels.includes(b)) {
+            if (tAndCLabels.includes(b) || aggLabels.includes(b)) {
                 if (b === "rev_cleaned") {
                     retval[b] = d["rev_endowment"] + d["rev_other"];
                 } else if (b === "rev_all") {

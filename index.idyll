@@ -137,7 +137,21 @@ This income is often restricted, however, meaning that **they can only be spent 
 
 Other revenue is received through federal and private contracts and non-endowment investment income, which are represented in different ways on different schools’ financial statements and condensed into an “other revenue” category here.
 
-[LineChart school:"pomona" fields:`["la", "tuition", "rev_cleaned"]`/]
+
+
+**Total revenue**
+[ReLineChart fields:`["rev_all"]` formatString:".4s"/]
+
+[FullWidth className:"two-col-parent" style:`{maxWidth: 900, margin: "96px auto"}`]
+    [TwoColChild]
+        **Total revenue, minus gifts and net stu. rev.**
+        [ReLineChart fields:`["rev_cleaned"]` formatString:".4s"/]
+    [/TwoColChild]
+    [TwoColChild]
+        **Total revenue, minus... change since 2013-14**
+        [ReLineChart fields:`["rev_cleaned", "nat", "la"]` isCum:`true`/]
+    [/TwoColChild]
+[/FullWidth]
 
 [LineBreak/]
 

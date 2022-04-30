@@ -12,7 +12,17 @@ export const allData = {
     pitzer: data_pitzer,
 }
 
-export const tAndCLabels = ["tuition", "la", "nat", "ca", "hepi", "rev_cleaned", "rev_all"];
+export const tAndCLabels = ["tuition", "la", "nat", "ca", "hepi"];
+
+export const aggLabels = ["rev_cleaned", "rev_all"];
+
+export const schoolLabels = {
+    scripps: "Scripps College",
+    pomona: "Pomona College",
+    cmc: "Claremont McKenna College",
+    hmc: "Harvey Mudd College",
+    pitzer: "Pitzer College",
+}
 
 export const dataLabels = {
     rev_other: "Other revenue*",
@@ -37,12 +47,5 @@ export const dataLabels = {
     hepi: "Higher Education Price Index",
     rev_cleaned: "Revenue without stu. rev. or gifts",
     rev_all: "Total revenue",
-}
-
-export const schoolLabels = {
-    scripps: "Scripps College",
-    pomona: "Pomona College",
-    cmc: "Claremont McKenna College",
-    hmc: "Harvey Mudd College",
-    pitzer: "Pitzer College",
+    ...schoolLabels,
 }
