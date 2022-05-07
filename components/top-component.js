@@ -162,6 +162,23 @@ class TopComponent extends D3Component {
             .attr("dy", 32)
             .style("font-size", 20)
 
+        const otherLabel = changeLabel
+            .append("tspan")
+            .text("other 5Cs")
+            .attr("x", chartWidth + 32)
+            .attr("dy", chartHeight - 64)
+            .style("font-size", 20)
+            .style("opacity", 0.25);
+
+        const inflationLabel = changeLabel
+            .append("tspan")
+            .text("national inflation")
+            .attr("x", chartWidth + 32)
+            .attr("dy", 32)
+            .style("font-size", 20)
+            .style("opacity", 0.25)
+            .attr("fill", "red");
+
         const pomCumSeries = cumSeries[0];
 
         const transitionTime = 3000;
