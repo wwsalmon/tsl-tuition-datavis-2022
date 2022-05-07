@@ -134,13 +134,13 @@ Other revenue is received through federal and private contracts and non-endowmen
         [ChartTitle]
         **Revenue without gifts**
         [/ChartTitle]
-        [ReLineChart fields:`["rev_wo_gifts"]` formatString:".4s"/]
+        [ReLineChart fields:`["rev_wo_gifts"]` formatMoneyString:"$.4s"/]
     [/TwoColChild]
     [TwoColChild]
         [ChartTitle]
         *Change since 2013-14*
         [/ChartTitle]
-        [ReLineChart fields:`["rev_wo_gifts", "nat"]` isCum:`true`/]
+        [ReLineChart fields:`["rev_wo_gifts", "nat"]` isCum:`true` formatMoneyString:"$.4s"/]
     [/TwoColChild]
 [/FullWidth]
 

@@ -6,7 +6,17 @@ import calculateChange from "../utils/calculateChange.js";
 import {Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis, LineChart} from "recharts";
 import * as d3 from "d3";
 
-export default function ReLineChart({fields, school, isCum = false, range, formatString, numYears = 8}) {
+const preColorScale = d3.scaleOrdinal()
+    .domain(["cmc", "hmc", "pomona", "scripps", "pitzer", "nat", "la", "ca"].map(d => dataLabels[d]))
+    .range(["#910039","#333333","#01549A","#33735B","#E89200","#bbbbbb","#bbbbbb","#bbbbbb"]);
+
+const colorScale = d3.scaleOrdinal(d3.schemeTableau10);
+
+function getColor(field) {
+    return (Object.values(schoolLabels).includes(field) || tAndCLabels.map(d => dataLabels[d]).includes(field)) ? preColorScale(field) : colorScale(field);
+}
+
+export default function ReLineChart({fields, school, isCum = false, range, formatPercentString, formatMoneyString, numYears = 8}) {
     let data;
 
     if (school) {
@@ -23,13 +33,15 @@ export default function ReLineChart({fields, school, isCum = false, range, forma
                     retval[b] = d["rev_endowment"] + d["rev_other"] + d["rev_contributions"] + d["rev_students"];
                 } else if (b === "rev_cleaned") {
                     retval[b] = d["rev_endowment"] + d["rev_other"] + d["rev_students"];
-                    if (["cmc", "pomona"].includes(school)) retval[school] = retval[school] * 1000;
                 } else {
                     retval[b] = tuitionAndCpiData.find(x => x.year === d.year)[b === "tuition" ? school : b];
                 }
             } else {
                 retval[b] = d[b];
             }
+
+            if ((b.substring(0, 3) === "rev" || b === "finaid") && ["cmc", "pomona"].includes(school)) retval[b] = retval[b] * 1000;
+
             return retval;
         }, {year: d.year}));
     } else {
@@ -48,16 +60,15 @@ export default function ReLineChart({fields, school, isCum = false, range, forma
                         retval[school] = tuitionAndCpiData.find(x => x.year === (2014 + +i))[school];
                     } else if (mainField === "rev_all") {
                         retval[school] = thisSchoolYear["rev_students"] + thisSchoolYear["rev_contributions"] + thisSchoolYear["rev_endowment"] + thisSchoolYear["rev_other"];
-                        if (["cmc", "pomona"].includes(school)) retval[school] = retval[school] * 1000;
                     } else if (mainField === "rev_cleaned") {
                         retval[school] = thisSchoolYear["rev_endowment"] + thisSchoolYear["rev_other"];
-                        if (["cmc", "pomona"].includes(school)) retval[school] = retval[school] * 1000;
                     } else if (mainField === "rev_wo_gifts") {
                         retval[school] = thisSchoolYear["rev_endowment"] + thisSchoolYear["rev_other"] + thisSchoolYear["rev_students"];
-                        if (["cmc", "pomona"].includes(school)) retval[school] = retval[school] * 1000;
                     } else {
                         retval[school] = thisSchoolYear[mainField];
                     }
+
+                    if ((mainField.substring(0, 3) === "rev" || mainField === "finaid") && ["cmc", "pomona"].includes(school)) retval[school] = retval[school] * 1000;
                 }
             }
 
@@ -72,6 +83,7 @@ export default function ReLineChart({fields, school, isCum = false, range, forma
     }
 
     data = data.sort((a, b) => +a.year - +b.year);
+    const oldData = [...data];
 
     if (isCum) {
         data = calculateChange(data, ["year"]);
@@ -93,25 +105,50 @@ export default function ReLineChart({fields, school, isCum = false, range, forma
         });
     }
 
-    const preColorScale = d3.scaleOrdinal()
-        .domain(["cmc", "hmc", "pomona", "scripps", "pitzer", "nat", "la", "ca"].map(d => dataLabels[d]))
-        .range(["#910039","#333333","#01549A","#33735B","#E89200","#bbbbbb","#bbbbbb","#bbbbbb"]);
-
-    const colorScale = d3.scaleOrdinal(d3.schemeTableau10);
-
-    const formatter = d => d3.format(formatString || (isCum ? ".00%" : ","))(d);
+    const formatterPercent = d => d3.format(formatPercentString || ".00%")(d);
+    const formatterMoney = d => d3.format(formatMoneyString || "$0,")(d);
+    const axisFormatter = isCum ? formatterPercent : formatterMoney;
 
     return (
         <div style={{margin: "48px 0"}}>
             <ResponsiveContainer width="100%" height={400}>
                 <LineChart data={data}>
                     <XAxis dataKey="year" style={{fontSize: 14}}/>
-                    <YAxis style={{fontSize: 14}} domain={range || ["auto", "auto"]} tickFormatter={formatter}/>
+                    <YAxis style={{fontSize: 14}} domain={range || ["auto", "auto"]} tickFormatter={axisFormatter}/>
                     <Legend wrapperStyle={{fontSize: 14}} iconType="circle"/>
-                    <Tooltip wrapperStyle={{fontSize: 14}} formatter={formatter}/>
+                    {isCum ? (
+                        <Tooltip wrapperStyle={{fontSize: 14}} content={({label, payload}) => {
+                            if (payload.length) {
+                                const year = +payload[0].payload.year.substring(5, 9);
+                                const thisOldData = oldData.find(d => d.year === year);
+
+                                return (
+                                    <div style={{padding: 12, backgroundColor: "white", border: "1px solid #ccc"}}>
+                                        <div style={{marginBottom: 8}}><span>{label}</span></div>
+                                        {payload.map((item, i) => {
+                                            const field = Object.keys(dataLabels).find(key => dataLabels[key] === item.name);
+                                            const thisOldValue = thisOldData[field];
+
+                                            return (
+                                                <div style={{color: getColor(item.name), marginTop: 8}} key={field}>
+                                                    <span>
+                                                        {item.name}: {formatterPercent(item.value.toString())} ({formatterMoney(thisOldValue)})
+                                                    </span>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                );
+                            }
+
+                            return null;
+                        }}/>
+                    ) : (
+                        <Tooltip wrapperStyle={{fontSize: 14}} formatter={formatterMoney}/>
+                    )}
                     {Object.keys(data[0]).slice(1).map(field => (
                         <Line type="monotone" dataKey={field} key={field} strokeWidth={2}
-                              stroke={(Object.values(schoolLabels).includes(field) || tAndCLabels.map(d => dataLabels[d]).includes(field)) ? preColorScale(field) : colorScale(field)}
+                              stroke={getColor(field)}
                               dot={false}
                               strokeDasharray={(field === "National CPI") ? "3 3" : (field === "LA County CPI") ? "6 6" : (field === "California CPI") ? "12 12" : "3 0"}
                         />
