@@ -11,7 +11,10 @@
     "exp_academic_support": 5849769,
     "exp_student_services": 7953639,
     "exp_institutional_support": 9929776,
-    "exp_auxiliary_enterprises": 6748440
+    "exp_auxiliary_enterprises": 6748440,
+    "tuition": 58660,
+    "finaid": 14783546,
+    "enrollment": 829
   },
   {
     "year": 2020,
@@ -25,7 +28,10 @@
     "exp_academic_support": 6546072,
     "exp_student_services": 8366092,
     "exp_institutional_support": 11265958,
-    "exp_auxiliary_enterprises": 9850756
+    "exp_auxiliary_enterprises": 9850756,
+    "tuition": 58359,
+    "finaid": 20743376,
+    "enrollment": 898
   },
   {
     "year": 2019,
@@ -39,7 +45,10 @@
     "exp_academic_support": 6728053,
     "exp_student_services": 7860600,
     "exp_institutional_support": 12039017,
-    "exp_auxiliary_enterprises": 9715111
+    "exp_auxiliary_enterprises": 9715111,
+    "tuition": 56331,
+    "finaid": 19911125,
+    "enrollment": 895
   },
   {
     "year": 2018,
@@ -53,6 +62,9 @@
     "exp_academic_support": 6858370,
     "exp_student_services": 7775031,
     "exp_institutional_support": 10913435,
-    "exp_auxiliary_enterprises": 9128811
+    "exp_auxiliary_enterprises": 9128811,
+    "tuition": 54347,
+    "finaid": 18298394,
+    "enrollment": 847
   }
 ]

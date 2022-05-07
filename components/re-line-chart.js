@@ -1,6 +1,5 @@
 import {aggLabels, allData, dataLabels, schoolLabels, tAndCLabels} from "../utils/data.js";
 import tuitionAndCpiData from "../data/tuition-and-cpi.json";
-import finaidData from "../data/finaid.json";
 import React from "react";
 import calculateChange from "../utils/calculateChange.js";
 import {Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis, LineChart} from "recharts";
@@ -24,9 +23,7 @@ export default function ReLineChart({fields, school, isCum = false, range, forma
 
         data = thisSchoolData.map(d => fields.reduce((a, b) => {
             let retval = {...a};
-            if (b === "finaid") {
-                retval[b] = finaidData.find(x => x.year === d.year)[school];
-            } else if (tAndCLabels.includes(b) || aggLabels.includes(b)) {
+            if (tAndCLabels.includes(b) || aggLabels.includes(b)) {
                 if (b === "rev_cleaned") {
                     retval[b] = d["rev_endowment"] + d["rev_other"];
                 } else if (b === "rev_all") {
@@ -40,8 +37,6 @@ export default function ReLineChart({fields, school, isCum = false, range, forma
                 retval[b] = d[b];
             }
 
-            if ((b.substring(0, 3) === "rev" || b === "finaid") && ["cmc", "pomona"].includes(school)) retval[b] = retval[b] * 1000;
-
             return retval;
         }, {year: d.year}));
     } else {
@@ -54,9 +49,7 @@ export default function ReLineChart({fields, school, isCum = false, range, forma
                 const thisSchoolYear = allData[school].find(x => x.year === (2014 + +i));
 
                 if (thisSchoolYear || (+i > 7 && mainField === "tuition")) {
-                    if (mainField === "finaid") {
-                        retval[school] = finaidData.find(x => x.year === (2014 + +i))[school];
-                    } else if (mainField === "tuition") {
+                    if (mainField === "tuition") {
                         retval[school] = tuitionAndCpiData.find(x => x.year === (2014 + +i))[school];
                     } else if (mainField === "rev_all") {
                         retval[school] = thisSchoolYear["rev_students"] + thisSchoolYear["rev_contributions"] + thisSchoolYear["rev_endowment"] + thisSchoolYear["rev_other"];
@@ -67,8 +60,6 @@ export default function ReLineChart({fields, school, isCum = false, range, forma
                     } else {
                         retval[school] = thisSchoolYear[mainField];
                     }
-
-                    if ((mainField.substring(0, 3) === "rev" || mainField === "finaid") && ["cmc", "pomona"].includes(school)) retval[school] = retval[school] * 1000;
                 }
             }
 

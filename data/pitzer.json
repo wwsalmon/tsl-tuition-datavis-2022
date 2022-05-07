@@ -9,7 +9,10 @@
     "exp_cocurricular": 11702864,
     "exp_marketing": 5300306,
     "exp_admin": 7744816,
-    "exp_public": 1174
+    "exp_public": 1174,
+    "tuition": 58008,
+    "finaid": 12561118,
+    "enrollment": 802
   },
   {
     "year": 2020,
@@ -21,7 +24,10 @@
     "exp_cocurricular": 15974342,
     "exp_marketing": 5825075,
     "exp_admin": 8789075,
-    "exp_public": 378536
+    "exp_public": 378536,
+    "tuition": 56018,
+    "finaid": 16823631,
+    "enrollment": 1062
   },
   {
     "year": 2019,
@@ -33,7 +39,10 @@
     "exp_cocurricular": 15757439,
     "exp_marketing": 6646539,
     "exp_admin": 9607462,
-    "exp_public": 564643
+    "exp_public": 564643,
+    "tuition": 54056,
+    "finaid": 17135240,
+    "enrollment": 1050
   },
   {
     "year": 2018,
@@ -45,7 +54,10 @@
     "exp_cocurricular": 16106046,
     "exp_marketing": 6169092,
     "exp_admin": 8420482,
-    "exp_public": 766971
+    "exp_public": 766971,
+    "tuition": 51964,
+    "finaid": 17679766,
+    "enrollment": 1046
   },
   {
     "year": 2017,
@@ -57,7 +69,10 @@
     "exp_cocurricular": 16373447,
     "exp_marketing": 6238046,
     "exp_admin": 8013742,
-    "exp_public": 570223
+    "exp_public": 570223,
+    "tuition": 50160,
+    "finaid": 15847371,
+    "enrollment": 1029
   },
   {
     "year": 2016,
@@ -69,7 +84,10 @@
     "exp_cocurricular": 16208104,
     "exp_marketing": 6199698,
     "exp_admin": 7074501,
-    "exp_public": 490065
+    "exp_public": 490065,
+    "tuition": 48400,
+    "finaid": 14115950,
+    "enrollment": 1035
   },
   {
     "year": 2015,
@@ -81,7 +99,10 @@
     "exp_cocurricular": 15545417,
     "exp_marketing": 6248623,
     "exp_admin": 7111597,
-    "exp_public": 1059273
+    "exp_public": 1059273,
+    "tuition": 46752,
+    "finaid": 12164533,
+    "enrollment": 1038
   },
   {
     "year": 2014,
@@ -93,6 +114,9 @@
     "exp_cocurricular": 14920368,
     "exp_marketing": 5977538,
     "exp_admin": 7492356,
-    "exp_public": 1078623
+    "exp_public": 1078623,
+    "tuition": 46720,
+    "finaid": 11870758,
+    "enrollment": 1044
   }
 ]

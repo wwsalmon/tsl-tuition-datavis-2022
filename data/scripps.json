@@ -8,7 +8,10 @@
     "exp_academic": 28150669,
     "exp_cocurricular": 16362072,
     "exp_marketing": 7792772,
-    "exp_admin": 8925215
+    "exp_admin": 8925215,
+    "tuition": 59410,
+    "finaid": 15823629,
+    "enrollment": 861
   },
   {
     "year": 2020,
@@ -19,7 +22,10 @@
     "exp_academic": 35856229,
     "exp_cocurricular": 22690006,
     "exp_marketing": 8481955,
-    "exp_admin": 10208304
+    "exp_admin": 10208304,
+    "tuition": 56970,
+    "finaid": 19714186,
+    "enrollment": 1082
   },
   {
     "year": 2019,
@@ -30,7 +36,10 @@
     "exp_academic": 34051600,
     "exp_cocurricular": 22445869,
     "exp_marketing": 7943856,
-    "exp_admin": 8240873
+    "exp_admin": 8240873,
+    "tuition": 54806,
+    "finaid": 17539333,
+    "enrollment": 1042
   },
   {
     "year": 2018,
@@ -41,7 +50,10 @@
     "exp_academic": 34079958,
     "exp_cocurricular": 21152480,
     "exp_marketing": 8021799,
-    "exp_admin": 7960922
+    "exp_admin": 7960922,
+    "tuition": 52748,
+    "finaid": 17921693,
+    "enrollment": 1056
   },
   {
     "year": 2017,
@@ -52,7 +64,10 @@
     "exp_academic": 33049320,
     "exp_cocurricular": 19510520,
     "exp_marketing": 8044629,
-    "exp_admin": 7237161
+    "exp_admin": 7237161,
+    "tuition": 50766,
+    "finaid": 16291421,
+    "enrollment": 1026
   },
   {
     "year": 2016,
@@ -63,7 +78,10 @@
     "exp_academic": 32279943,
     "exp_cocurricular": 18468211,
     "exp_marketing": 7908720,
-    "exp_admin": 7385300
+    "exp_admin": 7385300,
+    "tuition": 48938,
+    "finaid": 15873097,
+    "enrollment": 965
   },
   {
     "year": 2015,
@@ -74,7 +92,10 @@
     "exp_academic": 29779443,
     "exp_cocurricular": 16834157,
     "exp_marketing": 7480507,
-    "exp_admin": 7110131
+    "exp_admin": 7110131,
+    "tuition": 47164,
+    "finaid": 15542488,
+    "enrollment": 963
   },
   {
     "year": 2014,
@@ -85,6 +106,9 @@
     "exp_academic": 29494373,
     "exp_cocurricular": 16184006,
     "exp_marketing": 7635260,
-    "exp_admin": 6754989
+    "exp_admin": 6754989,
+    "tuition": 45350,
+    "finaid": 15734679,
+    "enrollment": 975
   }
 ]

@@ -9,12 +9,10 @@ class Treemap extends D3Component {
 
         const data = allData[school];
 
-        const inMillions = school === "pomona" || school === "cmc";
-
         const thisData = data.find(d => d.year === year);
 
         let root = {name: thisData.year};
-        root.children = Object.keys(thisData).filter(d => d.substring(0, 3) === "rev").map(d => ({name: d, value: thisData[d] * (inMillions ? 1000 : 1)}));
+        root.children = Object.keys(thisData).filter(d => d.substring(0, 3) === "rev").map(d => ({name: d, value: thisData[d]}));
 
         const revTotal = root.children.reduce((a, b) => a + +b.value, 0);
 
