@@ -90,7 +90,19 @@ Each 5C school publishes annual, audited financial statements that break down th
 
 ## How do the 5Cs spend money?
 
-[ReTreemap school:"pomona" year:2020/]
+Though each 5C school reports their expenses in slightly different ways, spending generally falls into three large buckets.
+
+[ExpensesScroller /]
+
+[ReTreemap isExpenses:true/]
+
+[ReTreemap isExpenses:true school:"cmc"/]
+
+[ReTreemap isExpenses:true school:"pitzer"/]
+
+[ReTreemap isExpenses:true school:"scripps"/]
+
+[ReTreemap isExpenses:true school:"hmc"/]
 
 [LineBreak/]
 
