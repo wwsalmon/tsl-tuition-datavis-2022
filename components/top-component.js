@@ -1,7 +1,7 @@
 import React from 'react';
 import D3Component from 'idyll-d3-component';
 import * as d3 from 'd3';
-import data from "../data/tuition-and-cpi.json" assert {type: "json"};
+import data from "../data/tuition-and-cpi.json";
 
 const labels = Object.keys(data[0]).filter(x => x !== "year");
 
@@ -201,4 +201,4 @@ class TopComponent extends D3Component {
     }
 }
 
-export default TopComponent;
+module.exports = TopComponent;

@@ -4,6 +4,10 @@ body {
   font-size: 20px;
 }
 
+.idyll-root {
+  padding: 0;
+}
+
 .font-lora {
   font-family: "Lora", serif;
 }
@@ -16,4 +20,28 @@ body {
   .two-col-child {
     width: 50%;
   }
+}
+
+a, a:visited, a:hover {
+  border: none;
+  box-shadow: none;
+  color: #0366d6;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+.aside, .aside p {
+  font-size: 14px;
+  line-height: unset;
 }

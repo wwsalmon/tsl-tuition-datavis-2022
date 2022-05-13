@@ -105,4 +105,4 @@ class LineChart extends D3Component {
     }
 }
 
-export default LineChart;
+module.exports = LineChart;

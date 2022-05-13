@@ -2,10 +2,10 @@ import React from "react";
 import {allData} from "../utils/data.js";
 import {ResponsiveContainer, Tooltip, Treemap} from "recharts";
 
-export default function ReTreemap({isExpenses = false, school = "pomona", year = 2020}) {
+module.exports = function ReTreemap({isExpenses = false, school = "pomona", year = 2020}) {
     const thisSchoolYear = allData[school].find(d => d.year === year);
 
-    if (!thisSchoolYear) return <></>;
+    if (!thisSchoolYear) return null;
 
     const treeData = Object
         .keys(thisSchoolYear)

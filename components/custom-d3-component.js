@@ -29,4 +29,4 @@ class CustomD3Component extends D3Component {
   }
 }
 
-export default CustomD3Component;
+module.exports = CustomD3Component;

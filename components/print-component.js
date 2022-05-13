@@ -100,4 +100,4 @@ class PrintComponent extends D3Component {
     }
 }
 
-export default PrintComponent;
+module.exports = PrintComponent;

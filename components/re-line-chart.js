@@ -15,7 +15,7 @@ function getColor(field) {
     return (Object.values(schoolLabels).includes(field) || tAndCLabels.map(d => dataLabels[d]).includes(field)) ? preColorScale(field) : colorScale(field);
 }
 
-export default function ReLineChart({fields, school, isCum = false, range, formatPercentString, formatMoneyString, numYears = 8}) {
+module.exports = function ReLineChart({fields, school, isCum = false, range, formatPercentString, formatMoneyString, numYears = 8}) {
     let data;
 
     if (school) {

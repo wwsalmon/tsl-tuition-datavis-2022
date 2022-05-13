@@ -10,7 +10,7 @@
 If she was able to put her academic interests first, Michelle Lee PO ‘25 would have likely majored in philosophy.
 [/p]
 
-[Aside style:`{fontSize: 14}`]
+[Aside]
 
 ![Michelle Lee PO '25](static/michelle.jpeg)
 
@@ -74,7 +74,7 @@ When asked about why their respective colleges decide to increase tuition by mor
     [/TwoColChild]
 [/FullWidth]
 
-[Aside style:`{fontSize: 14}`]
+[Aside]
 
 The reports are available as PDFs here: [CMC](https://www.cmc.edu/treasurer/annual-reports) • [HMC](https://www.hmc.edu/bao/financial-affairs/) • [Pitzer](https://www.pitzer.edu/treasurer/documents-policies/) • [Pomona](https://www.pomona.edu/administration/treasurer/financial-statements) • [Scripps](https://www.scrippscollege.edu/about/glance/financial-reports)
 
@@ -92,7 +92,10 @@ Each 5C school publishes annual, audited financial statements that break down th
 
 Though each 5C school reports their expenses in slightly different ways, spending generally falls into three large buckets.
 
-[ExpensesScroller /]
+[Scroller]
+    [Step]testing[/Step]
+    [Step]testing 2[/Step]
+[/Scroller]
 
 [ReTreemap isExpenses:true/]
 
@@ -135,7 +138,7 @@ Other revenue is received through federal and private contracts and non-endowmen
 
 [LineBreak/]
 
-[Aside style:`{fontSize: 14}`]
+[Aside]
 † Donations and grants excluded because they vary dramatically year-to-year.
 [/Aside]
 

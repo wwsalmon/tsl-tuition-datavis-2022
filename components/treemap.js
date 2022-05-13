@@ -107,4 +107,4 @@ class Treemap extends D3Component {
     }
 }
 
-export default Treemap;
+module.exports = Treemap;

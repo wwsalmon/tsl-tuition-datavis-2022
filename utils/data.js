@@ -1,8 +1,8 @@
-import data_scripps from "../data/scripps.json" assert {type: "json"};
-import data_pomona from "../data/pomona.json" assert {type: "json"};
-import data_cmc from "../data/cmc.json" assert {type: "json"};
-import data_hmc from "../data/hmc.json" assert {type: "json"};
-import data_pitzer from "../data/pitzer.json" assert {type: "json"};
+import data_scripps from "../data/scripps.json";
+import data_pomona from "../data/pomona.json";
+import data_cmc from "../data/cmc.json";
+import data_hmc from "../data/hmc.json";
+import data_pitzer from "../data/pitzer.json";
 
 export const allData = {
     scripps: data_scripps,
