@@ -31,6 +31,8 @@ const pt = 48;
 const graphWidth = width - pl - pr;
 const graphHeight = height - pt - pb;
 
+const animDuration = 500;
+
 const yScale = d3.scaleLinear().domain([0, d3.max(expData.map(d => d.expenses))]).range([graphHeight, 0]);
 const xScale = d3.scaleBand().range([0, graphWidth]).domain(expData.map(d => d.school)).padding(0.2);
 const bandwidth = xScale.bandwidth();
@@ -105,18 +107,16 @@ function step2From1(svg) {
     const container = svg.select("#container");
     const barGroups = svg.selectAll(".barGroup");
 
-    console.log(container, barGroups);
-
     // split lines in (t1)
     container.selectAll(".splitLine")
         .transition()
-        .duration(750)
+        .duration(animDuration)
         .style("opacity", 1);
 
     // axes out (t1)
     container.selectAll(".xAxis")
         .transition()
-        .duration(750)
+        .duration(animDuration)
         .style("opacity", 0);
 
     // barGroups align top (t1)
@@ -124,28 +124,28 @@ function step2From1(svg) {
         .data(splitData)
         .join("g")
         .transition()
-        .duration(750)
+        .duration(animDuration)
         .style("transform", d => `translate(${xScale(d.school)}px, 0px)`);
 
     // main rects out (t2)
     container.selectAll(".mainRect")
         .transition()
-        .delay(750)
-        .duration(750)
+        .delay(animDuration)
+        .duration(animDuration)
         .style("opacity", 0);
 
     // split lines out (t2)
     container.selectAll(".splitLine")
         .transition()
-        .delay(750)
-        .duration(750)
+        .delay(animDuration)
+        .duration(animDuration)
         .style("opacity", 0);
 
     // single rects big (t3)
     container.selectAll(".singleRect")
         .transition()
-        .delay(1500)
-        .duration(750)
+        .delay(2 * animDuration)
+        .duration(animDuration)
         .style("transform", "scale(24)");
 }
 
@@ -158,21 +158,21 @@ function step1From2(svg) {
     // single rects small (t1)
     container.selectAll(".singleRect")
         .transition()
-        .duration(750)
+        .duration(animDuration)
         .style("transform", "scale(1)");
 
     // split lines in (t2)
     container.selectAll(".splitLine")
         .transition()
-        .delay(750)
-        .duration(750)
+        .delay(animDuration)
+        .duration(animDuration)
         .style("opacity", 1);
 
     // main rects in (t2)
     container.selectAll(".mainRect")
         .transition()
-        .delay(750)
-        .duration(750)
+        .delay(animDuration)
+        .duration(animDuration)
         .style("opacity", 1);
 
     // barGroups to position (t3)
@@ -180,22 +180,22 @@ function step1From2(svg) {
         .data(splitData)
         .join("g")
         .transition()
-        .delay(1500)
-        .duration(750)
+        .delay(2 * animDuration)
+        .duration(animDuration)
         .style("transform", d => `translate(${xScale(d.school)}px, ${d.startHeight}px)`);
 
     // axes in (t3)
     container.selectAll(".xAxis")
         .transition()
-        .delay(1500)
-        .duration(750)
+        .delay(2 * animDuration)
+        .duration(animDuration)
         .style("opacity", 1);
 
     // split lines out (t3)
     container.selectAll(".splitLine")
         .transition()
-        .delay(1500)
-        .duration(750)
+        .delay(2 * animDuration)
+        .duration(animDuration)
         .style("opacity", 0);
 }
 

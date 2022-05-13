@@ -49,3 +49,9 @@ h1, h2, h3, h4, h5, h6 {
 div.idyll-scroll-graphic {
   z-index: unset!important;
 }
+
+.idyll-step {
+  z-index: 1;
+  position: relative;
+  border: 1px solid #666;
+}
