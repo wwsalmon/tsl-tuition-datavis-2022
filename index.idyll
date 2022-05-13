@@ -92,7 +92,9 @@ Each 5C school publishes annual, audited financial statements that break down th
 
 Though each 5C school reports their expenses in slightly different ways, spending generally falls into three large buckets.
 
-[Scroller]
+[var name:"step" value:-1/]
+[Scroller currentStep:step]
+    [Graphic style:`{height: "100vh"}`][ExpensesScroller step:step/][/Graphic]
     [Step]testing[/Step]
     [Step]testing 2[/Step]
 [/Scroller]

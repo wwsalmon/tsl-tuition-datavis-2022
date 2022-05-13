@@ -4,16 +4,7 @@ import React from "react";
 import calculateChange from "../utils/calculateChange.js";
 import {Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis, LineChart} from "recharts";
 import * as d3 from "d3";
-
-const preColorScale = d3.scaleOrdinal()
-    .domain(["cmc", "hmc", "pomona", "scripps", "pitzer", "nat", "la", "ca"].map(d => dataLabels[d]))
-    .range(["#910039","#333333","#01549A","#33735B","#E89200","#bbbbbb","#bbbbbb","#bbbbbb"]);
-
-const colorScale = d3.scaleOrdinal(d3.schemeTableau10);
-
-function getColor(field) {
-    return (Object.values(schoolLabels).includes(field) || tAndCLabels.map(d => dataLabels[d]).includes(field)) ? preColorScale(field) : colorScale(field);
-}
+import getColor from "../utils/getColor.js";
 
 module.exports = function ReLineChart({fields, school, isCum = false, range, formatPercentString, formatMoneyString, numYears = 8}) {
     let data;

@@ -1,6 +1,6 @@
-import React from 'react';
-import D3Component from 'idyll-d3-component';
-import * as d3 from 'd3';
+const React = require('react');
+const D3Component = require('idyll-d3-component');
+const d3 = require('d3');
 
 const size = 600;
 
