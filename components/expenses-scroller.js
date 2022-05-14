@@ -108,7 +108,7 @@ function highlightCells(barGroups, values = []) {
         .select("rect")
         .transition()
         .duration(animDuration)
-        .attr("fill", d => values.includes(d.data.name) ? "#fff" : "#222");
+        .attr("fill", d => values.includes(d.data.name) ? "#222" : getColor(schoolLabels[d.parent.data.name]));
 }
 
 function initialize(svg) {
@@ -221,7 +221,7 @@ function initialize(svg) {
     cells.append("rect")
         .attr("width", d => d.x1 - d.x0)
         .attr("height", d => d.y1 - d.y0)
-        .attr("fill", "#222");
+        .attr("fill", d => getColor(schoolLabels[d.parent.data.name]));
 
     cells.append("text")
         .text(d => dataLabels[d.data.name])
@@ -308,6 +308,9 @@ function step2From3(svg) {
     const container = svg.select("#container");
     const barGroups = svg.selectAll(".barGroup");
 
+    // show singleRect
+    fade(container, ".singleRect", 0, true);
+
     // fade treemaps (t1)
     fade(svg, ".treemapCell");
 
@@ -349,6 +352,8 @@ function step3From2(svg) {
 
     container.selectAll(".singleRect").transition().duration(animDuration).style("transform", `scale(${treemapScale})`);
 
+    fade(container, ".singleRect", 1);
+
     fade(container, ".treemapCell", 1, true);
 }
 
@@ -367,13 +372,13 @@ function step4(svg) {
 function step5(svg) {
     const barGroups = svg.selectAll(".barGroup");
 
-    highlightCells(barGroups, ["exp_admin", "exp_marketing", "exp_institutional_support"]);
+    highlightCells(barGroups, ["exp_cocurricular", "exp_student_services", "exp_auxiliary_enterprises"]);
 }
 
 function step6(svg) {
     const barGroups = svg.selectAll(".barGroup");
 
-    highlightCells(barGroups, ["exp_cocurricular", "exp_service", "exp_auxiliary_enterprises"]);
+    highlightCells(barGroups, ["exp_admin", "exp_marketing", "exp_institutional_support"]);
 }
 
 class ExpensesScroller extends D3Component {
