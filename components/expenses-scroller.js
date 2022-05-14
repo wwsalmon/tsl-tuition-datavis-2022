@@ -62,6 +62,16 @@ function fade(container, selector, delayCount = 0, fadeIn = false) {
         .style("opacity", +fadeIn);
 }
 
+function alignBarGroupsForStep2(barGroups, delayCount = 0) {
+    barGroups
+        .data([...splitData].sort((a, b) => b.expensesPerStudent - a.expensesPerStudent))
+        .join("g")
+        .transition()
+        .delay(delayCount * animDuration)
+        .duration(animDuration)
+        .style("transform", d => `translate(${xScale(d.school)}px, ${(graphHeight - d3.max(splitData.map(d => d.squareSide)) * squareScale) / 2}px)`);
+}
+
 function initialize(svg) {
     const container = svg.append("g").style("transform", `translate(${pl}px, ${pt}px)`).attr("id", "container");
 
@@ -161,45 +171,7 @@ function initialize(svg) {
         .attr("y", pt / 2);
 }
 
-function step2From1(svg) {
-    console.log("2 from 1");
-
-    svg.select("#title").text("2019-20 expenses per student");
-
-    const container = svg.select("#container");
-    const barGroups = svg.selectAll(".barGroup");
-
-    // bar labels, axes out
-    fade(container, ".rectLabel, .xAxis");
-
-    // split lines in (t1)
-    fade(container, ".splitLine", 0, true);
-
-    // barGroups align top (t1)
-    barGroups
-        .data([...splitData].sort((a, b) => b.expensesPerStudent - a.expensesPerStudent))
-        .join("g")
-        .transition()
-        .duration(animDuration)
-        .style("transform", d => `translate(${xScale(d.school)}px, ${(graphHeight - d3.max(splitData.map(d => d.squareSide)) * squareScale) / 2}px)`);
-
-    // main rects, split lines out (t2)
-    fade(container, ".mainRect, .splitLine", 1);
-
-    // single rects big (t3)
-    container.selectAll(".singleRect")
-        .transition()
-        .delay(2 * animDuration)
-        .duration(animDuration)
-        .style("transform", `scale(${squareScale})`);
-
-    // square labels in (t3)
-    fade(container, ".squareLabel", 2, true);
-}
-
 function step1From2(svg) {
-    console.log("1 from 2");
-
     svg.select("#title").text("2019-20 total expenses");
 
     const container = svg.select("#container");
@@ -233,6 +205,81 @@ function step1From2(svg) {
     fade(svg, ".rectLabel, .xAxis", 2, true);
 }
 
+function step2From1(svg) {
+    svg.select("#title").text("2019-20 expenses per student");
+
+    const container = svg.select("#container");
+    const barGroups = svg.selectAll(".barGroup");
+
+    // bar labels, axes out
+    fade(container, ".rectLabel, .xAxis");
+
+    // split lines in (t1)
+    fade(container, ".splitLine", 0, true);
+
+    // barGroups align top (t1)
+    alignBarGroupsForStep2(barGroups);
+
+    // main rects, split lines out (t2)
+    fade(container, ".mainRect, .splitLine", 1);
+
+    // single rects big (t3)
+    container.selectAll(".singleRect")
+        .transition()
+        .delay(2 * animDuration)
+        .duration(animDuration)
+        .style("transform", `scale(${squareScale})`);
+
+    // square labels in (t3)
+    fade(container, ".squareLabel", 2, true);
+}
+
+function step2From3(svg) {
+    const container = svg.select("#container");
+    const barGroups = svg.selectAll(".barGroup");
+
+    // fade treemaps (t1)
+
+    // single rects size down (t2)
+    container.selectAll(".singleRect")
+        .transition()
+        // .delay(animDuration)
+        .duration(animDuration)
+        .style("transform", `scale(${squareScale})`);
+
+    // barGroups align (t2)
+    alignBarGroupsForStep2(barGroups);
+
+    // show labels
+    fade(svg, ".squareLabel, #title", 0, true);
+}
+
+function step3From2(svg) {
+    const container = svg.select("#container");
+    const barGroups = svg.selectAll(".barGroup");
+
+    fade(svg, ".squareLabel, #title");
+
+    const squareXPadding = 24;
+    const newSquareScale = 37;
+    const squareY = (school) => ["pomona", "cmc"].includes(school) ? 0 : splitData.find(d => d.school === "pomona").squareSide * newSquareScale + squareXPadding;
+    const squareX = (school) => ({
+        "pomona": 0,
+        "cmc": newSquareScale * splitData.find(d => d.school === "pomona").squareSide + squareXPadding,
+        "hmc": 0,
+        "scripps": newSquareScale * splitData.find(d => d.school === "hmc").squareSide + squareXPadding,
+        "pitzer": newSquareScale * (splitData.find(d => d.school === "hmc").squareSide + splitData.find(d => d.school === "scripps").squareSide) + 2 * squareXPadding,
+    }[school]);
+
+    barGroups
+        .data(splitData)
+        .join("g")
+        .transition()
+        .duration(animDuration)
+        .style("transform", d => `translate(${squareX(d.school)}px, ${squareY(d.school)}px)`);
+
+    container.selectAll(".singleRect").transition().duration(animDuration).style("transform", `scale(${newSquareScale})`);
+}
 
 class ExpensesScroller extends D3Component {
     initialize(node, props) {
@@ -250,9 +297,9 @@ class ExpensesScroller extends D3Component {
 
     update(props, oldProps) {
         const {step} = props;
+        const {step: oldStep} = oldProps;
 
-        if (step === 0) return step1From2(this.svg);
-        if (step === 1) return step2From1(this.svg);
+        if (Math.abs(step - oldStep) === 1 && oldStep !== -1) eval(`step${step + 1}From${oldStep + 1}(this.svg)`);
     }
 }
 
