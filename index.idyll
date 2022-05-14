@@ -95,8 +95,12 @@ Though each 5C school reports their expenses in slightly different ways, spendin
 [var name:"step" value:-1/]
 [Scroller currentStep:step]
     [Graphic style:`{height: "100vh"}`][ExpensesScroller step:step/][/Graphic]
-    [Step]testing[/Step]
-    [Step]testing 2[/Step]
+    [Step]
+        Total spending varies by school, ranging from **$62M by Pitzer to $179M by Pomona** in the 2019-20 school year.
+    [/Step]
+    [Step]
+        In part this is because the student population varies from school to school. But spending still ranged from **$58K per student at Pitzer** to **$104K per student at Pomona** in the 2019-20 school year.
+    [/Step]
 [/Scroller]
 
 [ReTreemap isExpenses:true/]

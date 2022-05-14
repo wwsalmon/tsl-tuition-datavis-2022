@@ -30,6 +30,7 @@ const pb = 48;
 const pt = 48;
 const graphWidth = width - pl - pr;
 const graphHeight = height - pt - pb;
+const squareScale = 24;
 
 const animDuration = 500;
 
@@ -42,6 +43,8 @@ const splitData = expData.map(d => {
     const barHeight = graphHeight - startHeight;
     const numShortSide = Math.round(Math.sqrt(d.enrollment / (barHeight / bandwidth)));
     return {
+        expenses: d.expenses,
+        expensesPerStudent: d.expensesPerStudent,
         startHeight,
         school: d.school,
         barHeight,
@@ -50,6 +53,14 @@ const splitData = expData.map(d => {
         numLongSide: Math.round(numShortSide * barHeight / bandwidth),
     };
 });
+
+function fade(container, selector, delayCount = 0, fadeIn = false) {
+    container.selectAll(selector)
+        .transition()
+        .delay(delayCount * animDuration)
+        .duration(animDuration)
+        .style("opacity", +fadeIn);
+}
 
 function initialize(svg) {
     const container = svg.append("g").style("transform", `translate(${pl}px, ${pt}px)`).attr("id", "container");
@@ -77,6 +88,46 @@ function initialize(svg) {
         .attr("fill", d => getColor(schoolLabels[d.school]));
 
     barGroups
+        .append("text")
+        .attr("class", "rectLabel")
+        .attr("dx", 8)
+        .attr("dy", 8)
+        .text(d => d3.format("$,")(d.expenses))
+        .attr("fill", "white")
+        .attr("dominant-baseline", "hanging")
+        .style("font-size", 12)
+        .style("font-weight", 600);
+
+    const squareLabels = barGroups
+        .append("text")
+        .attr("class", "squareLabel")
+        .attr("dx", 8)
+        .attr("dy", 8)
+        .attr("fill", "white")
+        .attr("dominant-baseline", "hanging")
+        .style("font-size", 12)
+        .style("opacity", 0);
+
+    squareLabels
+        .append("tspan")
+        .text(d => d3.format("$,")(Math.round(d.expensesPerStudent)))
+        .style("font-weight", 600);
+
+    squareLabels
+        .append("tspan")
+        .text("/student");
+
+    barGroups
+        .append("text")
+        .attr("class", "squareLabel")
+        .text(d => schoolLabels[d.school])
+        .attr("dx", 8)
+        .attr("dy", d => d.squareSide * squareScale - 8)
+        .attr("fill", "white")
+        .style("font-size", 8)
+        .style("opacity", 0);
+
+    barGroups
         .selectAll("path.splitLineY")
         .data(d => Array(d.numShortSide).fill(d.squareSide))
         .enter()
@@ -98,62 +149,64 @@ function initialize(svg) {
         .attr("strokeWidth", 1)
         .style("opacity", 0);
 
-    container.append("g").attr("class", "xAxis").call(d3.axisBottom(xScale).tickSize(0)).style("transform", `translateY(${graphHeight}px)`);
+    container.append("g").attr("class", "xAxis").call(d3.axisBottom(xScale).tickSize(0).tickFormat(d => schoolLabels[d])).style("transform", `translateY(${graphHeight}px)`);
+
+    svg
+        .append("text")
+        .attr("id", "title")
+        .text("2019-20 total expenses")
+        .attr("text-anchor", "middle")
+        .attr("dominant-baseline", "middle")
+        .attr("x", width / 2)
+        .attr("y", pt / 2);
 }
 
 function step2From1(svg) {
     console.log("2 from 1");
 
+    svg.select("#title").text("2019-20 expenses per student");
+
     const container = svg.select("#container");
     const barGroups = svg.selectAll(".barGroup");
 
-    // split lines in (t1)
-    container.selectAll(".splitLine")
-        .transition()
-        .duration(animDuration)
-        .style("opacity", 1);
+    // bar labels, axes out
+    fade(container, ".rectLabel, .xAxis");
 
-    // axes out (t1)
-    container.selectAll(".xAxis")
-        .transition()
-        .duration(animDuration)
-        .style("opacity", 0);
+    // split lines in (t1)
+    fade(container, ".splitLine", 0, true);
 
     // barGroups align top (t1)
     barGroups
-        .data(splitData)
+        .data([...splitData].sort((a, b) => b.expensesPerStudent - a.expensesPerStudent))
         .join("g")
         .transition()
         .duration(animDuration)
-        .style("transform", d => `translate(${xScale(d.school)}px, 0px)`);
+        .style("transform", d => `translate(${xScale(d.school)}px, ${(graphHeight - d3.max(splitData.map(d => d.squareSide)) * squareScale) / 2}px)`);
 
-    // main rects out (t2)
-    container.selectAll(".mainRect")
-        .transition()
-        .delay(animDuration)
-        .duration(animDuration)
-        .style("opacity", 0);
-
-    // split lines out (t2)
-    container.selectAll(".splitLine")
-        .transition()
-        .delay(animDuration)
-        .duration(animDuration)
-        .style("opacity", 0);
+    // main rects, split lines out (t2)
+    fade(container, ".mainRect, .splitLine", 1);
 
     // single rects big (t3)
     container.selectAll(".singleRect")
         .transition()
         .delay(2 * animDuration)
         .duration(animDuration)
-        .style("transform", "scale(24)");
+        .style("transform", `scale(${squareScale})`);
+
+    // square labels in (t3)
+    fade(container, ".squareLabel", 2, true);
 }
 
 function step1From2(svg) {
     console.log("1 from 2");
 
+    svg.select("#title").text("2019-20 total expenses");
+
     const container = svg.select("#container");
     const barGroups = svg.selectAll(".barGroup");
+
+    // fade square labels out (t1)
+    fade(container, ".squareLabel");
 
     // single rects small (t1)
     container.selectAll(".singleRect")
@@ -161,19 +214,8 @@ function step1From2(svg) {
         .duration(animDuration)
         .style("transform", "scale(1)");
 
-    // split lines in (t2)
-    container.selectAll(".splitLine")
-        .transition()
-        .delay(animDuration)
-        .duration(animDuration)
-        .style("opacity", 1);
-
-    // main rects in (t2)
-    container.selectAll(".mainRect")
-        .transition()
-        .delay(animDuration)
-        .duration(animDuration)
-        .style("opacity", 1);
+    // split lines, main rects in (t2)
+    fade(container, ".splitLine, .mainRect", 1, true);
 
     // barGroups to position (t3)
     barGroups
@@ -184,19 +226,11 @@ function step1From2(svg) {
         .duration(animDuration)
         .style("transform", d => `translate(${xScale(d.school)}px, ${d.startHeight}px)`);
 
-    // axes in (t3)
-    container.selectAll(".xAxis")
-        .transition()
-        .delay(2 * animDuration)
-        .duration(animDuration)
-        .style("opacity", 1);
-
     // split lines out (t3)
-    container.selectAll(".splitLine")
-        .transition()
-        .delay(2 * animDuration)
-        .duration(animDuration)
-        .style("opacity", 0);
+    fade(container, ".splitLine", 2);
+
+    // axes, rect labels in (t3)
+    fade(svg, ".rectLabel, .xAxis", 2, true);
 }
 
 
