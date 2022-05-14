@@ -3,7 +3,7 @@ import getColor from "../utils/getColor.js";
 const React = require('react');
 const D3Component = require('idyll-d3-component');
 const d3 = require('d3');
-import {allData, schoolLabels} from "../utils/data.js";
+import {allData, dataLabels, schoolLabels} from "../utils/data.js";
 
 const expData = Object.keys(allData).map(d => {
     const thisData = allData[d].find(x => x.year === 2020);
@@ -31,6 +31,10 @@ const pt = 48;
 const graphWidth = width - pl - pr;
 const graphHeight = height - pt - pb;
 const squareScale = 24;
+const treemapPadding = 24;
+const treemapScale = 37;
+const treemapTextPadding = 8;
+const treemapTextSize = 10;
 
 const animDuration = 500;
 
@@ -54,6 +58,26 @@ const splitData = expData.map(d => {
     };
 });
 
+const treemapData = Object.fromEntries(splitData.map(d => {
+    const thisData = allData[d.school].find(d => d.year === 2020);
+    const thisTreemapData = {
+        name: d.school,
+        children: Object.keys(thisData).filter(d => d.substring(0, 3) === "exp").map(d => ({name: d, value: thisData[d]})),
+    };
+    const root = d3.hierarchy(thisTreemapData);
+    const size = treemapScale * d.squareSide;
+    const rootNode = root.sum(d => d.value).sort((a, b) => b.height - a.height || b.value - a.value);
+    d3.treemap().size([size, size]).padding(2).tile(d3.treemapBinary)(rootNode);
+    const leaves = rootNode.leaves();
+
+    return [
+        d.school,
+        leaves,
+    ];
+}));
+
+console.log(treemapData);
+
 function fade(container, selector, delayCount = 0, fadeIn = false) {
     container.selectAll(selector)
         .transition()
@@ -70,6 +94,21 @@ function alignBarGroupsForStep2(barGroups, delayCount = 0) {
         .delay(delayCount * animDuration)
         .duration(animDuration)
         .style("transform", d => `translate(${xScale(d.school)}px, ${(graphHeight - d3.max(splitData.map(d => d.squareSide)) * squareScale) / 2}px)`);
+}
+
+function highlightCells(barGroups, values = []) {
+    const cells = barGroups
+        .data(splitData)
+        .join("g")
+        .selectAll("g.treemapCell")
+        .data(d => treemapData[d.school])
+        .join("g");
+
+    cells
+        .select("rect")
+        .transition()
+        .duration(animDuration)
+        .attr("fill", d => values.includes(d.data.name) ? "#fff" : "#222");
 }
 
 function initialize(svg) {
@@ -169,6 +208,37 @@ function initialize(svg) {
         .attr("dominant-baseline", "middle")
         .attr("x", width / 2)
         .attr("y", pt / 2);
+
+    const cells = barGroups
+        .selectAll("g.treemapCell")
+        .data(d => treemapData[d.school])
+        .enter()
+        .append("g")
+        .attr("class", "treemapCell")
+        .attr("transform", d => `translate(${d.x0},${d.y0})`)
+        .style("opacity", 0);
+
+    cells.append("rect")
+        .attr("width", d => d.x1 - d.x0)
+        .attr("height", d => d.y1 - d.y0)
+        .attr("fill", "#222");
+
+    cells.append("text")
+        .text(d => dataLabels[d.data.name])
+        .attr("fill", "white")
+        .style("font-weight", 700)
+        .style("font-size", treemapTextSize)
+        .attr("dominant-baseline", "text-before-edge")
+        .attr("dy", treemapTextPadding)
+        .attr("dx", treemapTextPadding);
+
+    cells.append("text")
+        .text(d => d3.format("$,")(d.value))
+        .attr("fill", "white")
+        .style("font-size", treemapTextSize)
+        .attr("dominant-baseline", "text-before-edge")
+        .attr("dy", treemapTextPadding + treemapTextSize * 1.2)
+        .attr("dx", treemapTextPadding);
 }
 
 function step1From2(svg) {
@@ -239,19 +309,20 @@ function step2From3(svg) {
     const barGroups = svg.selectAll(".barGroup");
 
     // fade treemaps (t1)
+    fade(svg, ".treemapCell");
 
     // single rects size down (t2)
     container.selectAll(".singleRect")
         .transition()
-        // .delay(animDuration)
+        .delay(animDuration)
         .duration(animDuration)
         .style("transform", `scale(${squareScale})`);
 
     // barGroups align (t2)
-    alignBarGroupsForStep2(barGroups);
+    alignBarGroupsForStep2(barGroups, 1);
 
     // show labels
-    fade(svg, ".squareLabel, #title", 0, true);
+    fade(svg, ".squareLabel, #title", 1, true);
 }
 
 function step3From2(svg) {
@@ -260,15 +331,13 @@ function step3From2(svg) {
 
     fade(svg, ".squareLabel, #title");
 
-    const squareXPadding = 24;
-    const newSquareScale = 37;
-    const squareY = (school) => ["pomona", "cmc"].includes(school) ? 0 : splitData.find(d => d.school === "pomona").squareSide * newSquareScale + squareXPadding;
+    const squareY = (school) => ["pomona", "cmc"].includes(school) ? 0 : splitData.find(d => d.school === "pomona").squareSide * treemapScale + treemapPadding;
     const squareX = (school) => ({
         "pomona": 0,
-        "cmc": newSquareScale * splitData.find(d => d.school === "pomona").squareSide + squareXPadding,
+        "cmc": treemapScale * splitData.find(d => d.school === "pomona").squareSide + treemapPadding,
         "hmc": 0,
-        "scripps": newSquareScale * splitData.find(d => d.school === "hmc").squareSide + squareXPadding,
-        "pitzer": newSquareScale * (splitData.find(d => d.school === "hmc").squareSide + splitData.find(d => d.school === "scripps").squareSide) + 2 * squareXPadding,
+        "scripps": treemapScale * splitData.find(d => d.school === "hmc").squareSide + treemapPadding,
+        "pitzer": treemapScale * (splitData.find(d => d.school === "hmc").squareSide + splitData.find(d => d.school === "scripps").squareSide) + 2 * treemapPadding,
     }[school]);
 
     barGroups
@@ -278,7 +347,33 @@ function step3From2(svg) {
         .duration(animDuration)
         .style("transform", d => `translate(${squareX(d.school)}px, ${squareY(d.school)}px)`);
 
-    container.selectAll(".singleRect").transition().duration(animDuration).style("transform", `scale(${newSquareScale})`);
+    container.selectAll(".singleRect").transition().duration(animDuration).style("transform", `scale(${treemapScale})`);
+
+    fade(container, ".treemapCell", 1, true);
+}
+
+function step3From4(svg) {
+    const barGroups = svg.selectAll(".barGroup");
+
+    highlightCells(barGroups);
+}
+
+function step4(svg) {
+    const barGroups = svg.selectAll(".barGroup");
+
+    highlightCells(barGroups, ["exp_instruction", "exp_research", "exp_academic_support", "exp_academic"]);
+}
+
+function step5(svg) {
+    const barGroups = svg.selectAll(".barGroup");
+
+    highlightCells(barGroups, ["exp_admin", "exp_marketing", "exp_institutional_support"]);
+}
+
+function step6(svg) {
+    const barGroups = svg.selectAll(".barGroup");
+
+    highlightCells(barGroups, ["exp_cocurricular", "exp_service", "exp_auxiliary_enterprises"]);
 }
 
 class ExpensesScroller extends D3Component {
@@ -298,6 +393,8 @@ class ExpensesScroller extends D3Component {
     update(props, oldProps) {
         const {step} = props;
         const {step: oldStep} = oldProps;
+
+        if (step > 2) return eval(`step${step + 1}(this.svg)`);
 
         if (Math.abs(step - oldStep) === 1 && oldStep !== -1) eval(`step${step + 1}From${oldStep + 1}(this.svg)`);
     }
