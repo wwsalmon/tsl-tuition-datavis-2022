@@ -79,11 +79,17 @@ const treemapData = Object.fromEntries(splitData.map(d => {
 console.log(treemapData);
 
 function fade(container, selector, delayCount = 0, fadeIn = false) {
-    container.selectAll(selector)
+    const selection = container.selectAll(selector);
+
+    if (fadeIn) selection.style("display", "block");
+
+    selection
         .transition()
         .delay(delayCount * animDuration)
         .duration(animDuration)
         .style("opacity", +fadeIn);
+
+    if (!fadeIn) selection.transition().delay((delayCount + 1) * animDuration).style("display", "none");
 }
 
 function alignBarGroupsForStep2(barGroups, delayCount = 0) {
@@ -216,7 +222,24 @@ function initialize(svg) {
         .append("g")
         .attr("class", "treemapCell")
         .attr("transform", d => `translate(${d.x0},${d.y0})`)
-        .style("opacity", 0);
+        .style("opacity", 0)
+        .style("display", "none")
+        .on("mouseover", (d, b) => {
+            const fieldName = b.data.name;
+            const schoolName = b.parent.data.name;
+            const thisData = expData.find(x => x.school === schoolName);
+            d3.select("#treemapTooltipSchool").text(schoolLabels[schoolName]).attr("fill", getColor(schoolLabels[schoolName]));
+            d3.select("#treemapTooltipCategory").text(dataLabels[fieldName]);
+            d3.select("#treemapTooltipExpPerStudent").text(d3.format("$,")((b.data.value / thisData.enrollment).toFixed(2)));
+            d3.select("#treemapTooltipExp").text(d3.format("$,")(b.data.value));
+            d3.select("#treemapTooltipPercentage").text(d3.format(".2%")(b.data.value / thisData.expenses));
+            d3.select(d.currentTarget).style("opacity", 0.5);
+            d3.select("#treemapTooltip").style("display", "block");
+        })
+        .on("mouseout", d => {
+            d3.select(d.currentTarget).style("opacity", 1.0);
+            d3.select("#treemapTooltip").style("display", "none");
+        });
 
     cells.append("rect")
         .attr("width", d => d.x1 - d.x0)
@@ -232,13 +255,117 @@ function initialize(svg) {
         .attr("dy", treemapTextPadding)
         .attr("dx", treemapTextPadding);
 
-    cells.append("text")
-        .text(d => d3.format("$,")(d.value))
+    const cellLabels = cells.append("text")
         .attr("fill", "white")
         .style("font-size", treemapTextSize)
         .attr("dominant-baseline", "text-before-edge")
         .attr("dy", treemapTextPadding + treemapTextSize * 1.2)
         .attr("dx", treemapTextPadding);
+
+    cellLabels.append("tspan").text(d => d3.format("$,")((d.value / expData.find(x => x.school === d.parent.data.name).enrollment).toFixed(2)));
+    cellLabels
+        .append("tspan")
+        .text(d => d3.format(".2%")(d.value / expData.find(x => x.school === d.parent.data.name).expenses))
+        .style("opacity", 0.5)
+        .attr("dx", 4);
+
+    const treemapTooltip = container.append("g").attr("id", "treemapTooltip").style("display", "none");
+
+    treemapTooltip.append("text")
+        .text("Pomona College")
+        .attr("id", "treemapTooltipSchool")
+        .attr("dominant-baseline", "text-before-edge")
+        .attr("text-anchor", "end")
+        .style("font-size", 16)
+        .style("font-weight", 700)
+        .style("letter-spacing", "1px")
+        .style("text-transform", "uppercase")
+        .attr("x", graphWidth)
+        .attr("y", 0);
+
+    treemapTooltip.append("text")
+        .text("INSTRUCTION")
+        .attr("id", "treemapTooltipCategory")
+        .attr("dominant-baseline", "text-before-edge")
+        .attr("text-anchor", "end")
+        .style("font-size", 16)
+        .style("font-weight", 700)
+        .style("letter-spacing", "1px")
+        .style("text-transform", "uppercase")
+        .attr("x", graphWidth)
+        .attr("y", 20);
+
+    const mainStat = treemapTooltip.append("g")
+        .style("transform", "translateY(52px)")
+
+    mainStat.append("text")
+        .text("$67,991,000")
+        .attr("id", "treemapTooltipExpPerStudent")
+        .attr("dominant-baseline", "text-before-edge")
+        .attr("text-anchor", "end")
+        .style("font-size", 32)
+        .attr("x", graphWidth)
+
+    mainStat.append("text")
+        .text("per student per year")
+        .attr("dominant-baseline", "text-before-edge")
+        .attr("text-anchor", "end")
+        .style("font-size", 10)
+        .style("opacity", 0.5)
+        .attr("x", graphWidth)
+        .attr("y", 42);
+
+    const totalStat = treemapTooltip.append("g")
+        .style("transform", "translateY(136px)")
+
+    totalStat.append("text")
+        .text("$67,991,000,000")
+        .attr("id", "treemapTooltipExp")
+        .attr("dominant-baseline", "text-before-edge")
+        .attr("text-anchor", "end")
+        .style("font-size", 16)
+        .attr("x", graphWidth);
+
+    totalStat.append("text")
+        .text("total per year")
+        .attr("dominant-baseline", "text-before-edge")
+        .attr("text-anchor", "end")
+        .style("font-size", 10)
+        .style("opacity", 0.5)
+        .attr("x", graphWidth)
+        .attr("y", 24);
+
+    const percentageStat = treemapTooltip.append("g")
+        .style("transform", "translateY(196px)")
+
+    percentageStat.append("text")
+        .text("36.2%")
+        .attr("id", "treemapTooltipPercentage")
+        .attr("dominant-baseline", "text-before-edge")
+        .attr("text-anchor", "end")
+        .style("font-size", 16)
+        .attr("x", graphWidth);
+
+    percentageStat.append("text")
+        .text("percentage of all expenses")
+        .attr("dominant-baseline", "text-before-edge")
+        .attr("text-anchor", "end")
+        .style("font-size", 10)
+        .style("opacity", 0.5)
+        .attr("x", graphWidth)
+        .attr("y", 24);
+
+    treemapTooltip
+        .append("foreignObject")
+        .attr("x", graphWidth - 200)
+        .attr("y", 260)
+        .attr("width", 200)
+        .attr("height", 200)
+        .append("xhtml:p")
+        .attr("style", "font-size: 12px; text-align: right")
+        .attr("xmlns", "http://www.w3.org/1999/xhtml")
+        .attr("id", "treemapTooltipDescript")
+        .text("Academics† are the biggest spending category at every 5C school. This includes faculty and staff salaries, faculty and student research grants, academic department expenses and related spending on The Hive, the Benton Museum and each college’s libraries.");
 }
 
 function step1From2(svg) {
