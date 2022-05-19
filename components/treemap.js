@@ -5,7 +5,7 @@ import {allData, dataLabels, schoolLabels} from "../utils/data.js";
 
 class Treemap extends D3Component {
     initialize(node, props) {
-        const {school, year, highlight, highlightColor, viewWidth, totalScale} = props;
+        const {school, year, viewWidth, totalScale, center} = props;
 
         const data = allData[school];
 
@@ -35,8 +35,9 @@ class Treemap extends D3Component {
             .style('width', '100%')
             .style('height', 'auto');
 
-        const chart = svg.append("g")
-            .style("transform", `translateX(${((viewWidth || fullSize) - +size) / 2}px)`);
+        const chart = svg.append("g");
+
+        if (center) chart.style("transform", `translateX(${((viewWidth || fullSize) - +size) / 2}px)`);
 
         const treeChart = chart.append("g")
             .style("transform", `translateY(${3 * textPadding + 2 * textHeight}px)`);
@@ -50,7 +51,7 @@ class Treemap extends D3Component {
         cells.append("rect")
             .attr("width", d => d.x1 - d.x0)
             .attr("height", d => d.y1 - d.y0)
-            .attr("fill", d => (d.data.name === highlight) ? (highlightColor || "#3274BE") : "#222");
+            .attr("fill", d => (d.data.name === "rev_endowment") ? "#BE3232" : ((d.data.name === "rev_students") ? "#3274BE" : "#222"));
 
         cells.append("text")
             .text(d => dataLabels[d.data.name])

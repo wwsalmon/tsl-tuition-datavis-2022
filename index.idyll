@@ -135,28 +135,29 @@ That's because **financial aid spending isn't accounted for as an expense:** ins
 
 Among revenue sources, **net student revenue, endowment income and donations and grants** are the top three categories at all five 5C schools.
 
-[FullWidth style:`{display: "flex", margin: "96px 0"}`]
-    [Treemap school:"scripps" year:2020 style:`{width: "33%"}` viewWidth:350 highlight:"rev_students" totalScale:150000000/]
-    [Treemap school:"hmc" year:2020 style:`{width: "33%"}` viewWidth:350 highlight:"rev_students" totalScale:150000000/]
-    [Treemap school:"pitzer" year:2020 style:`{width: "33%"}` viewWidth:350 highlight:"rev_students" totalScale:150000000/]
+[FullWidth style:`{padding: "32px 0"}`]
+    [div style:`{display: "flex", margin: "32px auto", maxWidth: 1000}`]
+        [Treemap school:"cmc" year:2020 style:`{width: "60%"}` viewWidth:600/]
+        [div style:`{width: "40%"}`]
+            [Treemap school:"pomona" year:2020 viewWidth:400/]
+            [SpendingTreemapScale style:`{marginTop: 32}`/]
+        [/div]
+    [/div]
+    [div style:`{margin: "0 auto", maxWidth: 1000}`]
+        ![](static/sweep.svg)
+    [/div]
+    [div style:`{display: "flex", margin: "32px auto", maxWidth: 1000}`]
+        [Treemap school:"scripps" year:2020 style:`{width: "33%"}` viewWidth:350 totalScale:150000000 center:`true`/]
+        [Treemap school:"hmc" year:2020 style:`{width: "33%"}` viewWidth:350 totalScale:150000000 center:`true`/]
+        [Treemap school:"pitzer" year:2020 style:`{width: "33%"}` viewWidth:350 totalScale:150000000 center:`true`/]
+    [/div]
 [/FullWidth]
 
 At Scripps, Pitzer and HMC, net student revenue — **the cost of tuition, room and board for each student minus the financial aid provided to them** — makes up the majority of the school’s revenue.
 
 Each school also **receives an income each year from their endowment funds**. This income is equivalent to about **4% of a four-year rolling average** of the endowment fund’s value at each of the 5C schools, though the exact percentage varies by school.
 
-[FullWidth className:"two-col-parent" style:`{margin: "96px 0"}`]
-    [Treemap school:"cmc" year:2020 style:`{width: "60%"}` viewWidth:600 highlight:"rev_endowment" highlightColor:"#BE3232"/]
-    [Treemap school:"pomona" year:2020 style:`{width: "40%"}` viewWidth:400 highlight:"rev_endowment" highlightColor:"#BE3232"/]
-[/FullWidth]
-
-Having the biggest endowments, Pomona and CMC receive the most income from endowment spending policies each year.
-
-**Private gifts and grants** are the third major revenue source for the 5Cs. At CMC, they’ve been the largest nominal revenue source for all but two of the school years ending 2014-2021.
-
-This income is often restricted, however, meaning that **they can only be spent for specific purposes,** such as on a certain program or facility.
-
-Other revenue is received through federal and private contracts and non-endowment investment income, which are represented in different ways on different schools’ financial statements and condensed into an “other revenue” category here.
+**Private gifts and grants** are the third major revenue source for the 5Cs. Other revenue is received through federal contracts, private contracts and non-endowment investment income.
 
 [LineBreak/]
 
