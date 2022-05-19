@@ -58,5 +58,6 @@ export const dataLabels = {
     cocurricular: "Co-curricular",
     institutional: "Institutional",
     exp_all: "Total expenses",
+    exp_per_student: "Expenses per student",
     ...schoolLabels,
 }

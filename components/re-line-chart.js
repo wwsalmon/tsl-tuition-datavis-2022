@@ -19,6 +19,10 @@ module.exports = function ReLineChart({fields, school, isCum = false, range, for
             } else if (tAndCLabels.includes(b) || aggLabels.includes(b)) {
                 if (b === "exp_all") {
                     retval[b] = Object.keys(d).filter(x => x.substring(0, 3) === "exp").map(x => d[x]).reduce((a, b) => a + b, 0);
+                } else if (b === "exp_per_student") {
+                    const exp_total = Object.keys(d).filter(x => x.substring(0, 3) === "exp").map(x => d[x]).reduce((a, b) => a + b, 0);
+                    const enrollment = d.enrollment;
+                    retval[b] = exp_total / enrollment;
                 } else if (b === "rev_cleaned") {
                     retval[b] = d["rev_endowment"] + d["rev_other"];
                 } else if (b === "rev_all") {
@@ -46,6 +50,12 @@ module.exports = function ReLineChart({fields, school, isCum = false, range, for
                 if (thisSchoolYear || (+i > 7 && mainField === "tuition")) {
                     if (mainField === "tuition") {
                         retval[school] = tuitionAndCpiData.find(x => x.year === (2014 + +i))[school];
+                    } else if (mainField === "exp_all") {
+                        retval[school] = Object.keys(thisSchoolYear).filter(x => x.substring(0, 3) === "exp").map(x => thisSchoolYear[x]).reduce((a, b) => a + b, 0);
+                    } else if (mainField === "exp_per_student") {
+                        const exp_total = Object.keys(thisSchoolYear).filter(x => x.substring(0, 3) === "exp").map(x => thisSchoolYear[x]).reduce((a, b) => a + b, 0);
+                        const enrollment = thisSchoolYear.enrollment;
+                        retval[school] = exp_total / enrollment;
                     } else if (mainField === "rev_all") {
                         retval[school] = thisSchoolYear["rev_students"] + thisSchoolYear["rev_contributions"] + thisSchoolYear["rev_endowment"] + thisSchoolYear["rev_other"];
                     } else if (mainField === "rev_cleaned") {
