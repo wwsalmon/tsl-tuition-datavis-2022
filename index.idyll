@@ -159,53 +159,24 @@ Each school also **receives an income each year from their endowment funds**. Th
 
 **Private gifts and grants** are the third major revenue source for the 5Cs. Other revenue is received through federal contracts, private contracts and non-endowment investment income.
 
-[ReadMoreTitle/]
-[ReadMore title:"5C endowments reap unprecedented gains" date:"February 11, 2022" href:"https://tsl.news/5c-endowments-reap-unprecedented-gains/" img:"static/endowments-article.webp"/]
-[ReadMore title:"An in-depth look into the 5Cs’ endowments" date:"November 20, 2020" href:"https://tsl.news/the-claremont-colleges-endowment-explained/" img:"static/endowments-explained.webp"/]
-
-[LineBreak/]
+[div style:`{margin: "64px 0"}`]
+    [ReadMoreTitle/]
+    [ReadMore title:"5C endowments reap unprecedented gains" date:"February 11, 2022" href:"https://tsl.news/5c-endowments-reap-unprecedented-gains/" img:"static/endowments-article.webp"/]
+    [ReadMore title:"An in-depth look into the 5Cs’ endowments" date:"November 20, 2020" href:"https://tsl.news/the-claremont-colleges-endowment-explained/" img:"static/endowments-explained.webp"/]
+[/div]
 
 [Aside]
 † Donations and grants excluded because they vary dramatically year-to-year.
 [/Aside]
 
-**Revenue without gifts (†) increased more than inflation** at all five 5C schools from 2013-14 to 2019-20, only dropping in 2020-21 because of reduced enrollment due to the COVID pandemic.
+All 5C schools took in at least $XXXX more in revenue than expenses each year from 2013-14 to 2019-20. Revenue without gifts† increased at about the same rate as expenses.
 
-[FullWidth className:"two-col-parent" style:`{maxWidth: 900, margin: "96px auto"}`]
-    [TwoColChild]
-        [ChartTitle]
-        **Revenue without gifts**
-        [/ChartTitle]
-        [ReLineChart fields:`["rev_wo_gifts"]` formatMoneyString:"$.4s"/]
-    [/TwoColChild]
-    [TwoColChild]
-        [ChartTitle]
-        *Change since 2013-14*
-        [/ChartTitle]
-        [ReLineChart fields:`["rev_wo_gifts", "nat"]` isCum:`true` formatMoneyString:"$.4s"/]
-    [/TwoColChild]
-[/FullWidth]
+GRAPH HERE
 
-At all 5C schools except for Scripps College, **endowment income increased by a much greater percentage than net student revenue** from 2013-14 to 2019-20.
+But at X, X and X, net student revenue didn't increase by even more than inflation.
 
-[div style:`{margin: "96px 0"}`]
+That's because the amount of financial aid given out increased by more than tuition at X 5C schools.
 
-    [var name:"incomeSchool" value:"pomona" /]
+All schools claim to cover 100% of demonstrated need. THIS VARIES BLAH BLAH REIA PLS HELP WRITE THIS
 
-    [ChartTitle]Change in **endowment income vs. net student revenue** since 2013-14 for [Select value:incomeSchool options:`["cmc", "hmc", "pitzer", "pomona", "scripps"]` /][/ChartTitle]
-
-    [ReLineChart fields:`["rev_endowment", "rev_students", "tuition", "nat"]` school:incomeSchool isCum:true/]
-
-[/div]
-
-This is because the amount of financial aid provided has increased along with tuition. At every 5C school except Scripps College, the amount of financial aid provided increased at a faster rate than tuition from 2013-14 to 2019-20.
-
-[div style:`{margin: "96px 0"}`]
-
-    [var name:"finaidSchool" value:"pomona" /]
-
-    [ChartTitle]Change in **financial aid vs. tuition** since 2013-14 for [Select value:finaidSchool options:`["cmc", "hmc", "pitzer", "pomona", "scripps"]` /][/ChartTitle]
-
-    [ReLineChart fields:`["tuition", "finaid", "nat"]` school:finaidSchool isCum:true/]
-
-[/div]
+That means that, while tuition costs skyrocketed, the cost of attendance for students on financial aid remained constant.
