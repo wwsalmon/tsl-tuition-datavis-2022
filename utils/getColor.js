@@ -2,8 +2,8 @@ import * as d3 from "d3";
 import {dataLabels, schoolLabels, tAndCLabels} from "./data.js";
 
 const preColorScale = d3.scaleOrdinal()
-    .domain(["cmc", "hmc", "pomona", "scripps", "pitzer", "nat", "la", "ca"].map(d => dataLabels[d]))
-    .range(["#910039","#666666","#01549A","#33735B","#E89200","#bbbbbb","#bbbbbb","#bbbbbb"]);
+    .domain(["cmc", "hmc", "pomona", "scripps", "pitzer", "nat", "la", "ca", "tuition"].map(d => dataLabels[d]))
+    .range(["#910039","#666666","#01549A","#33735B","#E89200","#bbbbbb","#bbbbbb","#bbbbbb", "#000000"]);
 
 const colorScale = d3.scaleOrdinal(d3.schemeTableau10);
 

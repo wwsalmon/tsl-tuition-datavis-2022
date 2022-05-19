@@ -1,4 +1,4 @@
-import {aggLabels, allData, dataLabels, schoolLabels, tAndCLabels} from "../utils/data.js";
+import {aggLabels, allData, dataLabels, expCats, schoolLabels, tAndCLabels} from "../utils/data.js";
 import tuitionAndCpiData from "../data/tuition-and-cpi.json";
 import React from "react";
 import calculateChange from "../utils/calculateChange.js";
@@ -6,16 +6,20 @@ import {Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis, LineChart} fro
 import * as d3 from "d3";
 import getColor from "../utils/getColor.js";
 
-module.exports = function ReLineChart({fields, school, isCum = false, range, formatPercentString, formatMoneyString, numYears = 8}) {
+module.exports = function ReLineChart({fields, school, isCum = false, range, formatPercentString, formatMoneyString, numYears = 7, include2021 = false}) {
     let data;
 
     if (school) {
-        const thisSchoolData = allData[school];
+        const thisSchoolData = allData[school].filter(d => include2021 || d.year !== 2021);
 
         data = thisSchoolData.map(d => fields.reduce((a, b) => {
             let retval = {...a};
-            if (tAndCLabels.includes(b) || aggLabels.includes(b)) {
-                if (b === "rev_cleaned") {
+            if (Object.keys(expCats).includes(b)) {
+                retval[b] = expCats[b].map(x => d[x] || 0).reduce((a, b) => a + b, 0);
+            } else if (tAndCLabels.includes(b) || aggLabels.includes(b)) {
+                if (b === "exp_all") {
+                    retval[b] = Object.keys(d).filter(x => x.substring(0, 3) === "exp").map(x => d[x]).reduce((a, b) => a + b, 0);
+                } else if (b === "rev_cleaned") {
                     retval[b] = d["rev_endowment"] + d["rev_other"];
                 } else if (b === "rev_all") {
                     retval[b] = d["rev_endowment"] + d["rev_other"] + d["rev_contributions"] + d["rev_students"];

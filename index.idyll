@@ -119,6 +119,14 @@ Though each 5C school reports their expenses in slightly different ways, spendin
     [/Step]
 [/Scroller]
 
+over time
+
+[ReLineChart fields:`["exp_all", "academic", "cocurricular", "institutional", "tuition", "nat"]` school:"pomona" isCum:true/]
+[ReLineChart fields:`["exp_all", "academic", "cocurricular", "institutional", "tuition", "nat"]` school:"cmc" isCum:true/]
+[ReLineChart fields:`["exp_all", "academic", "cocurricular", "institutional", "tuition", "nat"]` school:"hmc" isCum:true/]
+[ReLineChart fields:`["exp_all", "academic", "cocurricular", "institutional", "tuition", "nat"]` school:"scripps" isCum:true/]
+[ReLineChart fields:`["exp_all", "academic", "cocurricular", "institutional", "tuition", "nat"]` school:"pitzer" isCum:true/]
+
 [LineBreak/]
 
 ## How do the 5Cs make money?
