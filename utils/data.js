@@ -16,6 +16,12 @@ export const tAndCLabels = ["tuition", "la", "nat", "ca", "hepi"];
 
 export const aggLabels = ["rev_cleaned", "rev_all", "rev_wo_gifts"];
 
+export const expCats = {
+    academic: ["exp_instruction", "exp_research", "exp_academic_support", "exp_academic"],
+    cocurricular: ["exp_cocurricular", "exp_student_services", "exp_auxiliary_enterprises"],
+    institutional: ["exp_admin", "exp_marketing", "exp_institutional_support"],
+}
+
 export const schoolLabels = {
     scripps: "Scripps College",
     pomona: "Pomona College",

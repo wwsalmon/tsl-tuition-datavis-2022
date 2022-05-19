@@ -3,7 +3,7 @@ import getColor from "../utils/getColor.js";
 const React = require('react');
 const D3Component = require('idyll-d3-component');
 const d3 = require('d3');
-import {allData, dataLabels, schoolLabels} from "../utils/data.js";
+import {allData, dataLabels, expCats, schoolLabels} from "../utils/data.js";
 
 const expData = Object.keys(allData).map(d => {
     const thisData = allData[d].find(x => x.year === 2020);
@@ -236,10 +236,7 @@ function initialize(svg) {
             d3.select(d.currentTarget).style("opacity", 0.5);
             d3.select("#treemapTooltip").style("display", "block");
         })
-        .on("mouseout", d => {
-            d3.select(d.currentTarget).style("opacity", 1.0);
-            d3.select("#treemapTooltip").style("display", "none");
-        });
+        .on("mouseout", d => d3.select(d.currentTarget).style("opacity", 1.0));
 
     cells.append("rect")
         .attr("width", d => d.x1 - d.x0)
@@ -435,6 +432,8 @@ function step2From3(svg) {
     const container = svg.select("#container");
     const barGroups = svg.selectAll(".barGroup");
 
+    container.select("#treemapTooltip").style("display", "none");
+
     // show singleRect
     fade(container, ".singleRect", 0, true);
 
@@ -493,19 +492,19 @@ function step3From4(svg) {
 function step4(svg) {
     const barGroups = svg.selectAll(".barGroup");
 
-    highlightCells(barGroups, ["exp_instruction", "exp_research", "exp_academic_support", "exp_academic"]);
+    highlightCells(barGroups, expCats.academic);
 }
 
 function step5(svg) {
     const barGroups = svg.selectAll(".barGroup");
 
-    highlightCells(barGroups, ["exp_cocurricular", "exp_student_services", "exp_auxiliary_enterprises"]);
+    highlightCells(barGroups, expCats.cocurricular);
 }
 
 function step6(svg) {
     const barGroups = svg.selectAll(".barGroup");
 
-    highlightCells(barGroups, ["exp_admin", "exp_marketing", "exp_institutional_support"]);
+    highlightCells(barGroups, expCats.institutional);
 }
 
 class ExpensesScroller extends D3Component {
