@@ -6,7 +6,27 @@ import {Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis, LineChart} fro
 import * as d3 from "d3";
 import getColor from "../utils/getColor.js";
 
-module.exports = function ReLineChart({fields, school, isCum = false, range, formatPercentString, formatMoneyString, numYears = 7, include2021 = false}) {
+function getData(thisSchoolYear, field, school, year) {
+    if (field === "tuition") {
+        return tuitionAndCpiData.find(x => x.year === year)[school];
+    } else if (field === "exp_all") {
+        return Object.keys(thisSchoolYear).filter(x => x.substring(0, 3) === "exp").map(x => thisSchoolYear[x]).reduce((a, b) => a + b, 0);
+    } else if (field === "exp_per_student") {
+        const exp_total = Object.keys(thisSchoolYear).filter(x => x.substring(0, 3) === "exp").map(x => thisSchoolYear[x]).reduce((a, b) => a + b, 0);
+        const enrollment = thisSchoolYear.enrollment;
+        return exp_total / enrollment;
+    } else if (field === "rev_all") {
+        return thisSchoolYear["rev_students"] + thisSchoolYear["rev_contributions"] + thisSchoolYear["rev_endowment"] + thisSchoolYear["rev_other"];
+    } else if (field === "rev_cleaned") {
+        return thisSchoolYear["rev_endowment"] + thisSchoolYear["rev_other"];
+    } else if (field === "rev_wo_gifts") {
+        return thisSchoolYear["rev_endowment"] + thisSchoolYear["rev_other"] + thisSchoolYear["rev_students"];
+    } else {
+        return thisSchoolYear[field];
+    }
+}
+
+module.exports = function ReLineChart({fields, school, isTwoFields = false, isCum = false, range, formatPercentString, formatMoneyString, numYears = 7, include2021 = false}) {
     let data;
 
     if (school) {
@@ -40,35 +60,26 @@ module.exports = function ReLineChart({fields, school, isCum = false, range, for
         }, {year: d.year}));
     } else {
         data = Array(numYears).fill(0).map((d,i) => {
-            let retval = {year: 2014 + +i};
-
-            const mainField = fields[0];
+            const year = 2014 + i;
+            let retval = {year: year};
 
             for (let school of Object.keys(schoolLabels)) {
-                const thisSchoolYear = allData[school].find(x => x.year === (2014 + +i));
+                const thisSchoolYear = allData[school].find(x => x.year === year);
 
-                if (thisSchoolYear || (+i > 7 && mainField === "tuition")) {
-                    if (mainField === "tuition") {
-                        retval[school] = tuitionAndCpiData.find(x => x.year === (2014 + +i))[school];
-                    } else if (mainField === "exp_all") {
-                        retval[school] = Object.keys(thisSchoolYear).filter(x => x.substring(0, 3) === "exp").map(x => thisSchoolYear[x]).reduce((a, b) => a + b, 0);
-                    } else if (mainField === "exp_per_student") {
-                        const exp_total = Object.keys(thisSchoolYear).filter(x => x.substring(0, 3) === "exp").map(x => thisSchoolYear[x]).reduce((a, b) => a + b, 0);
-                        const enrollment = thisSchoolYear.enrollment;
-                        retval[school] = exp_total / enrollment;
-                    } else if (mainField === "rev_all") {
-                        retval[school] = thisSchoolYear["rev_students"] + thisSchoolYear["rev_contributions"] + thisSchoolYear["rev_endowment"] + thisSchoolYear["rev_other"];
-                    } else if (mainField === "rev_cleaned") {
-                        retval[school] = thisSchoolYear["rev_endowment"] + thisSchoolYear["rev_other"];
-                    } else if (mainField === "rev_wo_gifts") {
-                        retval[school] = thisSchoolYear["rev_endowment"] + thisSchoolYear["rev_other"] + thisSchoolYear["rev_students"];
+                if (thisSchoolYear || (+i > 7 && !isTwoFields && fields[0] === "tuition")) {
+                    if (isTwoFields) {
+                        const firstField = fields[0];
+                        const secondField = fields[1];
+                        retval[school + "/" + firstField] = getData(thisSchoolYear, firstField, school, year);
+                        retval[school + "/" + secondField] = getData(thisSchoolYear, secondField, school, year);
                     } else {
-                        retval[school] = thisSchoolYear[mainField];
+                        const mainField = fields[0];
+                        retval[school] = getData(thisSchoolYear, mainField, school, year);
                     }
                 }
             }
 
-            const otherFields = fields.slice(1).filter(x => tAndCLabels.includes(x));
+            const otherFields = fields.slice(1 + +isTwoFields).filter(x => tAndCLabels.includes(x));
 
             for (let field of otherFields) {
                 retval[field] = tuitionAndCpiData.find(x => x.year === (2014 + +i))[field];
@@ -87,7 +98,13 @@ module.exports = function ReLineChart({fields, school, isCum = false, range, for
         data = data.map(d => {
             let retval = {year: `${d.year - 1}-${d.year}`};
             for (let field of Object.keys(data[0]).filter(d => d.substring(d.length - 3) === "cum")) {
-                retval[dataLabels[field.substring(0, field.length - 4)]] = d[field];
+                let fieldName = field.substring(0, field.length - 4);
+                if (!school && isTwoFields) {
+                    fieldName = dataLabels[fieldName.split("/")[0]] + ": " + dataLabels[fieldName.split("/")[1]];
+                } else {
+                    fieldName = dataLabels[fieldName];
+                }
+                retval[fieldName] = d[field];
             }
             return retval;
         });
@@ -102,7 +119,7 @@ module.exports = function ReLineChart({fields, school, isCum = false, range, for
     }
 
     const formatterPercent = d => d3.format(formatPercentString || ".00%")(d);
-    const formatterMoney = d => d3.format(formatMoneyString || "$0,")(d);
+    const formatterMoney = d => d3.format(formatMoneyString || "$0,")(d.toFixed(2));
     const axisFormatter = isCum ? formatterPercent : formatterMoney;
 
     return (
@@ -111,7 +128,40 @@ module.exports = function ReLineChart({fields, school, isCum = false, range, for
                 <LineChart data={data}>
                     <XAxis dataKey="year" style={{fontSize: 14}}/>
                     <YAxis style={{fontSize: 14}} domain={range || ["auto", "auto"]} tickFormatter={axisFormatter}/>
-                    <Legend wrapperStyle={{fontSize: 14}} iconType="circle"/>
+                    <Legend wrapperStyle={{fontSize: 14}} iconType="circle" content={({payload}) => {
+                        const isSpecial = !school && isTwoFields;
+                        const mapContents = isSpecial ? [fields[0], fields[1], ...new Set(payload.map(d => d.dataKey.split(":")[0]))] : payload;
+
+                        return (
+                            <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center", marginTop: 16}}>
+                                {mapContents.map((line, i) => (
+                                    <div style={{display: "flex", alignItems: "center", marginRight: 16}}>
+                                        <svg viewBox="0 0 20 20" width={20} height={20}>
+                                            {isSpecial ? (
+                                                <React.Fragment>
+                                                    {i < 2 ? (
+                                                        <path d="M 0 10 L 20 10" stroke="black"
+                                                              strokeWidth={2}
+                                                              strokeDasharray={i === 0 ? "3 0" : "3 3"}/>
+                                                    ) : (
+                                                        <circle cx={10} cy={10} r={6} fill={getColor(line)}/>
+                                                    )}
+                                                </React.Fragment>
+                                            ) : (
+                                                <path d="M 0 10 L 20 10" stroke={line.payload.stroke}
+                                                      strokeWidth={line.payload.strokeWidth}
+                                                      strokeDasharray={line.payload.strokeDasharray}/>
+                                            )}
+                                        </svg>
+                                        <span style={{
+                                            marginLeft: 8,
+                                            color: isSpecial ? i < 2 ? "black" : getColor(line) : line.payload.stroke,
+                                        }}>{isSpecial ? i < 2 ? dataLabels[line] : line : line.dataKey}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        )
+                    }}/>
                     {isCum ? (
                         <Tooltip wrapperStyle={{fontSize: 14}} content={({label, payload}) => {
                             if (payload.length) {
@@ -122,11 +172,14 @@ module.exports = function ReLineChart({fields, school, isCum = false, range, for
                                     <div style={{padding: 12, backgroundColor: "white", border: "1px solid #ccc"}}>
                                         <div style={{marginBottom: 8}}><span>{label}</span></div>
                                         {payload.map((item, i) => {
-                                            const field = Object.keys(dataLabels).find(key => dataLabels[key] === item.name);
+                                            const field = (!school && isTwoFields) ?
+                                                Object.keys(dataLabels).find(key => dataLabels[key] === item.name.split(":")[0]) + "/" +
+                                                Object.keys(dataLabels).find(key => dataLabels[key] === item.name.split(": ")[1]) :
+                                                Object.keys(dataLabels).find(key => dataLabels[key] === item.name);
                                             const thisOldValue = thisOldData[field];
 
                                             return (
-                                                <div style={{color: getColor(item.name), marginTop: 8}} key={field}>
+                                                <div style={{color: (isTwoFields && !school) ? getColor(item.name.split(":")[0]) : getColor(item.name), marginTop: 8}} key={field}>
                                                     <span>
                                                         {item.name}: {formatterPercent(item.value.toString())} ({formatterMoney(thisOldValue)})
                                                     </span>
@@ -142,13 +195,20 @@ module.exports = function ReLineChart({fields, school, isCum = false, range, for
                     ) : (
                         <Tooltip wrapperStyle={{fontSize: 14}} formatter={formatterMoney}/>
                     )}
-                    {Object.keys(data[0]).slice(1).map(field => (
-                        <Line type="monotone" dataKey={field} key={field} strokeWidth={2}
-                              stroke={getColor(field)}
-                              dot={false}
-                              strokeDasharray={(field === "National CPI") ? "3 3" : (field === "LA County CPI") ? "6 6" : (field === "California CPI") ? "12 12" : "3 0"}
-                        />
-                    ))}
+                    {Object.keys(data[0]).slice(1).map((field, i) => {
+                        const isTwoField = field.includes(":");
+                        const stroke = getColor(isTwoField ? field.split(":")[0] : field);
+                        const isSecondField = isTwoField && field.split(": ")[1] === dataLabels[fields[1]];
+                        const strokeDasharray = (field === "National CPI" || isSecondField) ? "3 3" : (field === "LA County CPI") ? "6 6" : (field === "California CPI") ? "12 12" : "3 0";
+
+                        return (
+                            <Line type="monotone" dataKey={field} key={field} strokeWidth={2}
+                                  stroke={stroke}
+                                  dot={false}
+                                  strokeDasharray={strokeDasharray}
+                            />
+                        )
+                    })}
                 </LineChart>
             </ResponsiveContainer>
         </div>

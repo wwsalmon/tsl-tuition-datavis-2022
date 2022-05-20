@@ -96,7 +96,7 @@ Per-student expenses increased by more than national inflation at CMC, Pomona an
 *View [Select value:expensesTotalOrPerStudent options:`["total", "per student"]`/] expenses*
 
 [Aside]
-    Harvey Mudd College excluded because financial reports are only available going back to 2017-18
+    Harvey Mudd College excluded because financial reports for the college are only available going back to 2017-18
 [/Aside]
 
 [ReLineChart fields:`[expensesTotalOrPerStudent === "total" ? "exp_all" : "exp_per_student", "nat", "la", "ca"]` isCum:true/]
@@ -123,11 +123,15 @@ Broadly, “**people, insurance, food and utilities**” were responsible for th
 
 [ReLineChart fields:`["exp_all", "academic", "cocurricular", "institutional", "nat", "la", "ca"]` school:expensesBreakdownSchool isCum:true/]
 
-But increasing expenses don't tell the whole story. Expenses per student increased by less than tuition for all 5C schools.
+But increasing expenses don't tell the whole story. Expenses per student increased by less than tuition at Pomona, Pitzer and Scripps from 2013-14 to 2019-20.
 
-GRAPH HERE
+[Aside]
+    Harvey Mudd College excluded because financial reports for the college are only available going back to 2017-18
+[/Aside]
 
-That's because **financial aid spending isn't accounted for as an expense:** instead, it's subtracted from each school's revenue. The answer to why tuition is increasing so steeply, then, lies in the revenue column of financial statements.
+[ReLineChart fields:`["exp_per_student", "tuition"]` isCum:`true` isTwoFields:`true`/]
+
+CHANGE That's because **financial aid spending isn't accounted for as an expense:** instead, it's subtracted from each school's revenue. The answer to why tuition is increasing so steeply, then, lies in the revenue column of financial statements.
 
 [LineBreak/]
 
@@ -167,7 +171,7 @@ Each school also **receives an income each year from their endowment funds**. Th
 
 All 5C schools took in at least $XXXX more in revenue than expenses each year from 2013-14 to 2019-20. Revenue without gifts† increased at about the same rate as expenses.
 
-GRAPH HERE
+[ReLineChart fields:`["rev_all", "exp_all"]` isCum:`true` isTwoFields:`true`/]
 
 But at X, X and X, net student revenue didn't increase by even more than inflation.
 
