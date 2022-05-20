@@ -26,6 +26,14 @@ function getData(thisSchoolYear, field, school, year) {
     }
 }
 
+function getFieldName(field, isSpecial = false) {
+    if (isSpecial) {
+        return dataLabels[field.split("/")[0]] + ": " + dataLabels[field.split("/")[1]];
+    } else {
+        return dataLabels[field];
+    }
+}
+
 module.exports = function ReLineChart({fields, school, isTwoFields = false, isCum = false, range, formatPercentString, formatMoneyString, numYears = 7, include2021 = false}) {
     let data;
 
@@ -99,11 +107,7 @@ module.exports = function ReLineChart({fields, school, isTwoFields = false, isCu
             let retval = {year: `${d.year - 1}-${d.year}`};
             for (let field of Object.keys(data[0]).filter(d => d.substring(d.length - 3) === "cum")) {
                 let fieldName = field.substring(0, field.length - 4);
-                if (!school && isTwoFields) {
-                    fieldName = dataLabels[fieldName.split("/")[0]] + ": " + dataLabels[fieldName.split("/")[1]];
-                } else {
-                    fieldName = dataLabels[fieldName];
-                }
+                fieldName = getFieldName(fieldName, !school && isTwoFields);
                 retval[fieldName] = d[field];
             }
             return retval;
@@ -112,7 +116,8 @@ module.exports = function ReLineChart({fields, school, isTwoFields = false, isCu
         data = data.map(d => {
             let retval = {year: `${d.year - 1}-${d.year}`};
             for (let field of Object.keys(data[0]).slice(1)) {
-                retval[dataLabels[field]] = d[field];
+                const fieldName = getFieldName(field, !school && isTwoFields);
+                retval[fieldName] = d[field];
             }
             return retval;
         });

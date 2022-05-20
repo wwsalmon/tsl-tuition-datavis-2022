@@ -53,6 +53,7 @@ export const dataLabels = {
     hepi: "Higher Education Price Index",
     rev_cleaned: "Revenue without stu. rev. or gifts",
     rev_all: "Total revenue",
+    rev_wo_gifts: "Revenue without gifts",
     finaid: "Financial aid",
     academic: "Academics",
     cocurricular: "Co-curricular",

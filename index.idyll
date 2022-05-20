@@ -58,12 +58,6 @@ Data for the graphics in this piece were collected from "Statement of Activity" 
 
 **TSL reviewed the past eight years of each 5C school's audited financial statements** to investigate exactly what costs are increasing, and how the burden falls on students.
 
-[LineBreak/]
-
-## How do the 5Cs spend money?
-
-Though each 5C school reports their expenses in slightly different ways, spending generally falls into three large buckets.
-
 [var name:"step" value:-1/]
 [Scroller currentStep:step]
     [Graphic style:`{height: "100vh"}`][ExpensesScroller step:step/][/Graphic]
@@ -109,6 +103,8 @@ Rachael Warecki, News & Strategic Communications Specialist at Scripps College, 
 
 “Costs related to the **addition of a new Residence Hall, together with major renovations** to several other Residence Halls, including the addition of air conditioning and addressing ADA accessibility, was a major driver of costs in co-curricular expenditures for \[Scripps\] College over recent years,” she said.
 
+![photo](https://tsl.news/wp-content/uploads/2022/02/Matejka_Scripps-Colonial1-1500x1000.jpg)
+
 Academic and institutional support expenses have also increased.
 
 Rob Goldberg, COO and treasurer at Pomona College, pointed to the need to provide competitive salaries as a driver of increasing expenses.
@@ -117,25 +113,31 @@ Rob Goldberg, COO and treasurer at Pomona College, pointed to the need to provid
 
 Broadly, “**people, insurance, food and utilities**” were responsible for the greatest increases in Pitzer College’s expenses, Pitzer spokesperson Wendy Sattuck said in an email.
 
-[var name:"expensesBreakdownSchool" value:"pomona" /]
-
-*View expense increase breakdown for [Select value:expensesBreakdownSchool options:`["pomona", "cmc", "hmc", "pitzer", "scripps"]`/]*
-
-[ReLineChart fields:`["exp_all", "academic", "cocurricular", "institutional", "nat", "la", "ca"]` school:expensesBreakdownSchool isCum:true/]
-
-But increasing expenses don't tell the whole story. Expenses per student increased by less than tuition at Pomona, Pitzer and Scripps from 2013-14 to 2019-20.
+But increasing expenses don't tell the whole story. Tuition increased by more than expenses per student at Pomona, Pitzer and Scripps from 2013-14 to 2019-20.
 
 [Aside]
     Harvey Mudd College excluded because financial reports for the college are only available going back to 2017-18
 [/Aside]
 
-[ReLineChart fields:`["exp_per_student", "tuition"]` isCum:`true` isTwoFields:`true`/]
+[ReLineChart fields:`["tuition", "exp_per_student"]` isCum:`true` isTwoFields:`true`/]
 
-CHANGE That's because **financial aid spending isn't accounted for as an expense:** instead, it's subtracted from each school's revenue. The answer to why tuition is increasing so steeply, then, lies in the revenue column of financial statements.
+The disparity lies in one last key variable: the amount of financial aid that schools give out.
+
+Rather than being listed as an expense, financial aid is sbutracted from each school's revenue in financial reporting.
+
+Thus, while total revenue growth has [matched spending growth at each 5C school](#appendix), net student revenue has not, and even decreased in 2019-20. Financial aid, meanwhile, has grown by more than tuition.
+
+All schools claim to cover 100% of demonstrated need. THIS VARIES BLAH BLAH REIA PLS HELP WRITE THIS
+
+At the end of the day, students on financial aid pay the same... (verify this)
+
+But that doesn't solve all problems...
+
+...the rest of everything here
 
 [LineBreak/]
 
-## How do the 5Cs make money?
+## Appendix: How do the 5Cs make money?
 
 Among revenue sources, **net student revenue, endowment income and donations and grants** are the top three categories at all five 5C schools.
 
@@ -165,18 +167,14 @@ Each school also **receives an income each year from their endowment funds**. Th
     [ReadMore title:"An in-depth look into the 5Cs’ endowments" date:"November 20, 2020" href:"https://tsl.news/the-claremont-colleges-endowment-explained/" img:"static/endowments-explained.webp"/]
 [/div]
 
-[Aside]
-† Donations and grants excluded because they vary dramatically year-to-year.
-[/Aside]
+Except at CMC, each school's total annual revenue increased at about the same rate as its expenses. All 5C schools took in at least $XXXX more in revenue than expenses each year from 2013-14 to 2019-20.
 
-All 5C schools took in at least $XXXX more in revenue than expenses each year from 2013-14 to 2019-20. Revenue without gifts† increased at about the same rate as expenses.
+[ReLineChart fields:`["rev_all", "exp_all"]` isTwoFields:`true`/]
 
-[ReLineChart fields:`["rev_all", "exp_all"]` isCum:`true` isTwoFields:`true`/]
+[LineBreak/]
 
-But at X, X and X, net student revenue didn't increase by even more than inflation.
+[var name:"expensesBreakdownSchool" value:"pomona" /]
 
-That's because the amount of financial aid given out increased by more than tuition at X 5C schools.
+*consider cutting this tbh View expense increase breakdown for [Select value:expensesBreakdownSchool options:`["pomona", "cmc", "hmc", "pitzer", "scripps"]`/]*
 
-All schools claim to cover 100% of demonstrated need. THIS VARIES BLAH BLAH REIA PLS HELP WRITE THIS
-
-That means that, while tuition costs skyrocketed, the cost of attendance for students on financial aid remained constant.
+[ReLineChart fields:`["exp_all", "academic", "cocurricular", "institutional", "nat", "la", "ca"]` school:expensesBreakdownSchool isCum:true/]
