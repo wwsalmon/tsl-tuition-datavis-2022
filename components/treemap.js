@@ -18,7 +18,7 @@ class Treemap extends D3Component {
 
 
         const fullSize = 600;
-        const size = fullSize * revTotal / (totalScale || 350000000);
+        const size = fullSize * Math.sqrt(revTotal / (totalScale || 400000000));
         const textPadding = 8;
         const textHeight = 16;
 

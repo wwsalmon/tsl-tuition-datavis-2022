@@ -14,7 +14,7 @@ const revs = ["scripps", "hmc", "pitzer"].map(d => {
     return {
         name: d,
         rev: thisRev,
-        size: fullSize * thisRev / totalScale,
+        size: fullSize * Math.sqrt(thisRev / totalScale),
     };
 });
 
