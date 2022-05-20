@@ -19,8 +19,6 @@ const expData = Object.keys(allData).map(d => {
     });
 }).sort((a, b) => b.expenses - a.expenses);
 
-console.log(expData);
-
 const width = 960;
 const height = 540;
 
@@ -75,8 +73,6 @@ const treemapData = Object.fromEntries(splitData.map(d => {
         leaves,
     ];
 }));
-
-console.log(treemapData);
 
 function fade(container, selector, delayCount = 0, fadeIn = false) {
     const selection = container.selectAll(selector);
