@@ -21,6 +21,10 @@ function getData(thisSchoolYear, field, school, year) {
         return thisSchoolYear["rev_endowment"] + thisSchoolYear["rev_other"];
     } else if (field === "rev_wo_gifts") {
         return thisSchoolYear["rev_endowment"] + thisSchoolYear["rev_other"] + thisSchoolYear["rev_students"];
+    } else if (field === "cost_on_aid") {
+        return thisSchoolYear["tuition"] + thisSchoolYear["non_tuition_cost"] - thisSchoolYear["finaid"] / thisSchoolYear["num_on_aid"];
+    } else if (field === "perc_on_aid") {
+        return thisSchoolYear["num_on_aid"] / thisSchoolYear["enrollment"];
     } else {
         return thisSchoolYear[field];
     }
@@ -57,6 +61,10 @@ module.exports = function ReLineChart({fields, school, isTwoFields = false, isCu
                     retval[b] = d["rev_endowment"] + d["rev_other"] + d["rev_contributions"] + d["rev_students"];
                 } else if (b === "rev_cleaned") {
                     retval[b] = d["rev_endowment"] + d["rev_other"] + d["rev_students"];
+                } else if (b === "cost_on_aid") {
+                    retval[b] = d["tuition"] + d["non_tuition_cost"] - d["finaid"] / d["num_on_aid"];
+                } else if (b === "perc_on_aid") {
+                    retval[b] = d["num_on_aid"] / d["enrollment"];
                 } else {
                     retval[b] = tuitionAndCpiData.find(x => x.year === d.year)[b === "tuition" ? school : b];
                 }
@@ -124,7 +132,7 @@ module.exports = function ReLineChart({fields, school, isTwoFields = false, isCu
     }
 
     const formatterPercent = d => d3.format(formatPercentString || ".00%")(d);
-    const formatterMoney = d => d3.format(formatMoneyString || "$0,")(d.toFixed(2));
+    const formatterMoney = d => d3.format(formatMoneyString || "$0,")(formatMoneyString ? d : d.toFixed(2));
     const axisFormatter = isCum ? formatterPercent : formatterMoney;
 
     return (

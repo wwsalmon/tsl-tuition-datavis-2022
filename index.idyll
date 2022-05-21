@@ -113,6 +113,8 @@ Rob Goldberg, COO and treasurer at Pomona College, pointed to the need to provid
 
 Broadly, “**people, insurance, food and utilities**” were responsible for the greatest increases in Pitzer College’s expenses, Pitzer spokesperson Wendy Sattuck said in an email.
 
+[LineBreak/]
+
 But increasing expenses don't tell the whole story. Tuition increased by more than expenses per student at Pomona, Pitzer and Scripps from 2013-14 to 2019-20.
 
 [Aside]
@@ -123,17 +125,55 @@ But increasing expenses don't tell the whole story. Tuition increased by more th
 
 The disparity lies in one last key variable: the amount of financial aid that schools give out.
 
-Rather than being listed as an expense, financial aid is sbutracted from each school's revenue in financial reporting.
+Rather than being listed as an expense, financial aid is subtracted from each school's revenue in financial reporting. Thus, while total revenue growth has [matched spending growth at each 5C school](#appendix), net student revenue has not, and even decreased in 2019-20.
 
-Thus, while total revenue growth has [matched spending growth at each 5C school](#appendix), net student revenue has not, and even decreased in 2019-20. Financial aid, meanwhile, has grown by more than tuition.
+**Financial aid, meanwhile, has grown at a greater rate than tuition** at CMC, Pomona and Pitzer, and just under the rate of tuition growth at Scripps.
 
-All schools claim to cover 100% of demonstrated need. THIS VARIES BLAH BLAH REIA PLS HELP WRITE THIS
+[ReLineChart fields:`["tuition", "finaid"]` isCum:`true` isTwoFields:`true`/]
 
-At the end of the day, students on financial aid pay the same... (verify this)
+All 5C schools cover 100% of demonstrated need, according to the schools’ financial aid websites. For students who receive need-based financial aid, who made up between 38% of the student population at Pitzer to 54% at Pomona in 2019-20, the average **cost of attendance after aid has not increased by nearly as much as tuition.** (phrase that better)
 
-But that doesn't solve all problems...
+[FullWidth style:`{maxWidth: 1200, margin: "0 auto"}`]
+    [TwoColParent]
+        [TwoColChild]
+            [var name:"numOnAidSwitch" value:"percentage of enrollment"/]
+            [ChartTitle]
+                Number of students awarded financial aid as [Select options:`["percentage of enrollment", "absolute"]` value:numOnAidSwitch/]
+            [/ChartTitle]
+            [ReLineChart fields:`[numOnAidSwitch === "absolute" ? "num_on_aid" : "perc_on_aid"]` formatMoneyString:`numOnAidSwitch === "absolute" ? "," : ".2%"` range:`[0, numOnAidSwitch === "absolute" ? 1000 : 1]`/]
+        [/TwoColChild]
+        [TwoColChild]
+            [var name:"costOnAidSwitch" value:"tuition"/]
+            [ChartTitle]
+                Average cost of attendance for students awarded aid vs. [Select options:`["tuition", "inflation"]` value:costOnAidSwitch/]
+            [/ChartTitle]
+            [ReLineChart fields:`["cost_on_aid", ...((costOnAidSwitch === "tuition") ? ["tuition"] : ["nat", "ca", "la"])]` isTwoFields:`costOnAidSwitch === "tuition"` isCum:`costOnAidSwitch === "inflation"` range:`(constOnAidSwitch === "tuition") ? [0, 60000] : undefined`/]
+        [/TwoColChild]
+    [/TwoColParent]
+[/FullWidth]
 
-...the rest of everything here
+But even though financial aid has risen with tuition, increasing costs of attendance still have consequences.
+
+Jada McCoy PO ’24, who receives financial aid from Pomona, noted that the cost of tuition has affected how she conducts herself in classes.
+
+“I feel like I need to be doing as much as possible, or I feel guilty if I'm not ‘excelling’ in a class because my family is paying for it,” she said. “It definitely comes with a sense of guilt, like I'm putting this extra financial situation onto my family. So I need to bring back…the best results.”
+
+Furthermore, schools that are need-aware in their admissions process try to admit a mix of students with families who are able to afford full tuition with those who have financial need.
+
+Some professors who have been teaching at the 5Cs for more than a decade have noted that currently, more students seem to be taking classes in STEM fields and economics than in the past, sometimes prioritizing acquiring potential job skills over other personal interests.
+
+Paul Faulstich, who has been a professor of environmental analysis at Pitzer for over 30 years, said that current tuition costs might be leading people to perceive college as an investment of money rather than an investment of time.
+
+“The liberal experience of the liberal arts has become less important as costs rise and students hone their collegiate ambitions,” Faulstich said via email. “It’s not necessarily some shortsighted, wealth driven myopic interest in making a bundle of money that’s driving this change; it’s driven by the need to make good, solid choices about how college will serve them over time and provide a foundation for livelihood.”
+
+Similarly, CMC government professor George Thomas said that he was concerned by how tuition costs might be resulting in less attention to the humanities.
+“Students and their families think that STEM or econ are worthwhile, whatever the student's interests, when the empirical evidence suggests that more traditional liberal arts majors tend to do very well long term,” Thomas said via email. “Having lived through the last five years, I'd say we could use a lot more people with a deep understanding of history, rather than a bunch more people with a preoccupation with finance \[or\] STEM.”
+
+Like Faultstich and Thomas, Pomona sociology professor Colin Beck has noticed an increase in the number of students taking classes that they are less interested in, such as computer science and economics, because they believe it will make them more marketable.
+
+Beck noted, however, that the rise in tuition costs is not the sole driving force pushing students to major in such fields.
+
+“Any account that links attitudes and behaviors to tuition cost in isolation from actual prices, affordability, the job market, social inequality, and other broader trends is just a bad analysis,” Beck said via email.
 
 [LineBreak/]
 

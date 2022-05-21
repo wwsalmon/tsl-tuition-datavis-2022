@@ -13,7 +13,9 @@
     "exp_auxiliary_enterprises": 17936000,
     "tuition": 56190,
     "finaid": 24918000,
-    "enrollment": 1240
+    "enrollment": 1240,
+    "num_on_aid": 551,
+    "non_tuition_cost": 17585
   },
   {
     "year": 2020,
@@ -29,7 +31,9 @@
     "exp_auxiliary_enterprises": 21979000,
     "tuition": 56190,
     "finaid": 27531000,
-    "enrollment": 1333
+    "enrollment": 1333,
+    "num_on_aid": 563,
+    "non_tuition_cost": 17585
   },
   {
     "year": 2019,
@@ -45,7 +49,9 @@
     "exp_auxiliary_enterprises": 21150000,
     "tuition": 54160,
     "finaid": 25201000,
-    "enrollment": 1316
+    "enrollment": 1316,
+    "num_on_aid": 530,
+    "non_tuition_cost": 17260
   },
   {
     "year": 2018,
@@ -61,7 +67,9 @@
     "exp_auxiliary_enterprises": 21614000,
     "tuition": 52580,
     "finaid": 23474000,
-    "enrollment": 1334
+    "enrollment": 1334,
+    "num_on_aid": 539,
+    "non_tuition_cost": 17565
   },
   {
     "year": 2017,
@@ -77,7 +85,9 @@
     "exp_auxiliary_enterprises": 21208000,
     "tuition": 50700,
     "finaid": 21611000,
-    "enrollment": 1343
+    "enrollment": 1343,
+    "num_on_aid": 531,
+    "non_tuition_cost": 17055
   },
   {
     "year": 2016,
@@ -93,7 +103,9 @@
     "exp_auxiliary_enterprises": 17997000,
     "tuition": 48800,
     "finaid": 20963000,
-    "enrollment": 1323
+    "enrollment": 1323,
+    "num_on_aid": 524,
+    "non_tuition_cost": 16565
   },
   {
     "year": 2015,
@@ -109,7 +121,9 @@
     "exp_auxiliary_enterprises": 17188000,
     "tuition": 47150,
     "finaid": 19920000,
-    "enrollment": 1293
+    "enrollment": 1293,
+    "num_on_aid": 504,
+    "non_tuition_cost": 16040
   },
   {
     "year": 2014,
@@ -125,6 +139,8 @@
     "exp_auxiliary_enterprises": 17140000,
     "tuition": 45380,
     "finaid": 20799000,
-    "enrollment": 1307
+    "enrollment": 1307,
+    "num_on_aid": 526,
+    "non_tuition_cost": 15580
   }
 ]

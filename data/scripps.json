@@ -11,7 +11,9 @@
     "exp_admin": 8925215,
     "tuition": 59410,
     "finaid": 15823629,
-    "enrollment": 861
+    "enrollment": 861,
+    "num_on_aid": 340,
+    "non_tuition_cost": 18504
   },
   {
     "year": 2020,
@@ -25,7 +27,9 @@
     "exp_admin": 10208304,
     "tuition": 56970,
     "finaid": 19714186,
-    "enrollment": 1082
+    "enrollment": 1082,
+    "num_on_aid": 385,
+    "non_tuition_cost": 17818
   },
   {
     "year": 2019,
@@ -39,7 +43,9 @@
     "exp_admin": 8240873,
     "tuition": 54806,
     "finaid": 17539333,
-    "enrollment": 1042
+    "enrollment": 1042,
+    "num_on_aid": 393,
+    "non_tuition_cost": 17150
   },
   {
     "year": 2018,
@@ -53,7 +59,9 @@
     "exp_admin": 7960922,
     "tuition": 52748,
     "finaid": 17921693,
-    "enrollment": 1056
+    "enrollment": 1056,
+    "num_on_aid": 398,
+    "non_tuition_cost": 16512
   },
   {
     "year": 2017,
@@ -67,7 +75,9 @@
     "exp_admin": 7237161,
     "tuition": 50766,
     "finaid": 16291421,
-    "enrollment": 1026
+    "enrollment": 1026,
+    "num_on_aid": 371,
+    "non_tuition_cost": 15898
   },
   {
     "year": 2016,
@@ -81,7 +91,9 @@
     "exp_admin": 7385300,
     "tuition": 48938,
     "finaid": 15873097,
-    "enrollment": 965
+    "enrollment": 965,
+    "num_on_aid": 371,
+    "non_tuition_cost": 15322
   },
   {
     "year": 2015,
@@ -95,7 +107,9 @@
     "exp_admin": 7110131,
     "tuition": 47164,
     "finaid": 15542488,
-    "enrollment": 963
+    "enrollment": 963,
+    "num_on_aid": 380,
+    "non_tuition_cost": 14776
   },
   {
     "year": 2014,
@@ -109,6 +123,8 @@
     "exp_admin": 6754989,
     "tuition": 45350,
     "finaid": 15734679,
-    "enrollment": 975
+    "enrollment": 975,
+    "num_on_aid": 417,
+    "non_tuition_cost": 14220
   }
 ]

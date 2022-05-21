@@ -14,7 +14,7 @@ export const allData = {
 
 export const tAndCLabels = ["tuition", "la", "nat", "ca", "hepi"];
 
-export const aggLabels = ["rev_cleaned", "rev_all", "rev_wo_gifts", "exp_all"];
+export const aggLabels = ["rev_cleaned", "rev_all", "rev_wo_gifts", "exp_all", "cost_on_aid", "perc_on_aid"];
 
 export const expCats = {
     academic: ["exp_instruction", "exp_research", "exp_academic_support", "exp_academic"],
@@ -54,11 +54,15 @@ export const dataLabels = {
     rev_cleaned: "Revenue without stu. rev. or gifts",
     rev_all: "Total revenue",
     rev_wo_gifts: "Revenue without gifts",
+    enrollment: "Enrollment",
     finaid: "Financial aid",
     academic: "Academics",
     cocurricular: "Co-curricular",
     institutional: "Institutional",
     exp_all: "Total expenses",
     exp_per_student: "Expenses per student",
+    num_on_aid: "Number of students awarded financial aid",
+    cost_on_aid: "Average cost of attendance for students awarded aid",
+    perc_on_aid: "Percentage of students awarded financial aid",
     ...schoolLabels,
 }

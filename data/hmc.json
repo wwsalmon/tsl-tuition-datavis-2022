@@ -14,7 +14,9 @@
     "exp_auxiliary_enterprises": 6748440,
     "tuition": 58660,
     "finaid": 14783546,
-    "enrollment": 829
+    "enrollment": 829,
+    "num_on_aid": 377,
+    "non_tuition_cost": 18980
   },
   {
     "year": 2020,
@@ -31,7 +33,9 @@
     "exp_auxiliary_enterprises": 9850756,
     "tuition": 58359,
     "finaid": 20743376,
-    "enrollment": 898
+    "enrollment": 898,
+    "num_on_aid": 442,
+    "non_tuition_cost": 18980
   },
   {
     "year": 2019,
@@ -48,7 +52,9 @@
     "exp_auxiliary_enterprises": 9715111,
     "tuition": 56331,
     "finaid": 19911125,
-    "enrollment": 895
+    "enrollment": 895,
+    "num_on_aid": 430,
+    "non_tuition_cost": 18422
   },
   {
     "year": 2018,
@@ -65,6 +71,8 @@
     "exp_auxiliary_enterprises": 9128811,
     "tuition": 54347,
     "finaid": 18298394,
-    "enrollment": 847
+    "enrollment": 847,
+    "num_on_aid": 411,
+    "non_tuition_cost": 17881
   }
 ]
