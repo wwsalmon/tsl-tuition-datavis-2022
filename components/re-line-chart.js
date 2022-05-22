@@ -132,7 +132,7 @@ module.exports = function ReLineChart({fields, school, isTwoFields = false, isCu
         });
     }
 
-    const formatterPercent = d => d3.format(formatPercentString || ".00%")(d);
+    const formatterPercent = d => d3.format(formatPercentString || ".2%")(d);
     const formatterMoney = d => d3.format(formatMoneyString || "$0,")(formatMoneyString ? d : d.toFixed(2));
     const axisFormatter = isCum ? formatterPercent : formatterMoney;
 
