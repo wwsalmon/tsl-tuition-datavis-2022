@@ -9,6 +9,8 @@ import getColor from "../utils/getColor.js";
 function getData(thisSchoolYear, field, school, year) {
     if (field === "tuition") {
         return tuitionAndCpiData.find(x => x.year === year)[school];
+    } else if (!thisSchoolYear) {
+        return null;
     } else if (field === "exp_all") {
         return Object.keys(thisSchoolYear).filter(x => x.substring(0, 3) === "exp").map(x => thisSchoolYear[x]).reduce((a, b) => a + b, 0);
     } else if (field === "exp_per_student") {
@@ -82,15 +84,14 @@ module.exports = function ReLineChart({fields, school, isTwoFields = false, isCu
             for (let school of Object.keys(schoolLabels)) {
                 const thisSchoolYear = allData[school].find(x => x.year === year);
 
-                if (thisSchoolYear || (+i > 7 && !isTwoFields && fields[0] === "tuition")) {
+                if (thisSchoolYear || !isCum || (!isTwoFields && fields[0] === "tuition")) {
                     if (isTwoFields) {
                         const firstField = fields[0];
                         const secondField = fields[1];
                         retval[school + "/" + firstField] = getData(thisSchoolYear, firstField, school, year);
                         retval[school + "/" + secondField] = getData(thisSchoolYear, secondField, school, year);
                     } else {
-                        const mainField = fields[0];
-                        retval[school] = getData(thisSchoolYear, mainField, school, year);
+                        retval[school] = getData(thisSchoolYear, fields[0], school, year);
                     }
                 }
             }
