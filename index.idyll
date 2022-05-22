@@ -256,6 +256,22 @@ Until the 5Cs meaningfully slow tuition increases, increasing costs are likely t
 
 “I've pretty much accepted that tuition is going to increase every year,” said Lee. “\[Balancing intellectual pursuits and careerism\] is an eternal struggle that students have, but the high tuition just complicates that even more and adds guilt, and a lot of other worries that wouldn't be there otherwise.”
 
+[LineBreak/]
+
+## Appendix
+
+This data visualization piece was created by Samson Zhang using Idyll, React, Recharts and d3. Its source code can be found on GitHub here.
+
+Samson Zhang, Rya Jetha, Mariana Duran, Reia Li and Jenna McMurtry contributed writing to this piece.
+
+All writers as well as Ava Francis-Hall, Julia Schwartz and Katherine Tan contributed interviews and data collection to this piece.
+
+The following data sources were used:
+
+- annual school financial reports for spending and revenue data
+- annual Common Data Sets for enrollment and financial aid data
+- school websites, including past versions accessed through the Internet Archive, for cost of attendance data
+
 ## THATS THE END EVERYTHING BELOW IS SCRATCH
 
 [LineBreak/]
