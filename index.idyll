@@ -65,7 +65,7 @@ Data for the graphics in this piece were collected from "Statement of Activity" 
         Total spending varies by school, ranging from **$62M by Pitzer to $179M by Pomona** in the 2019-20 school year.
     [/Step]
     [Step]
-        CHANGE In part this is because the student population varies from school to school. But spending still ranged from **$58K per student at Pitzer** to **$104K per student at Pomona** in the 2019-20 school year.
+        The schools have a range of student populations. Per student, spending ranged from $58K at Pitzer to $104K at Pomona in 2019-20.
     [/Step]
     [Step]
         Though each 5C school categorizes their expenses in a slightly different way, the reports show that spending generally falls into three large buckets.
@@ -76,10 +76,14 @@ Data for the graphics in this piece were collected from "Statement of Activity" 
         [p style:`{fontSize: 12}`]†”academic programs” at Scripps and Pitzer; “instruction”, “research” and “academic support” at Claremont McKenna, Harvey Mudd and Pomona. Expenses related to the Dean of Students and Registrar offices are included in the former two schools but fall under “student services” in the latter.[/p]
     [/Step]
     [Step]
-        Inst support is next-biggest at pom, cmc, hmc => spread between marketing (some in stu services) and general/admin (all inst) at other schools
+        Co-curricular spending is the next biggest spending category. The category includes residential life, dining and catering services, career development, mentorship groups, athletics, and other student support programs.†
+
+        [p style:`{fontSize: 12}`]†”co-curricular programs” at Scripps and Pitzer, “auxiliary enterprises” and “student services” at CMC, HMC and Pomona. “Student services” includes admissions, financial aid and registrar offices, while these expenses are categorized under “marketing,” “marketing” and “academic programs” respectively by schools that use those categories.[/p]
     [/Step]
     [Step]
-        Co-curricular at other three => spread between student services and aux enterprises
+        Institutional support† is the last major spending category, including administrative, finance, investment, alumni relations and communications offices, as well as admissions and financial aid at Scripps and Pitzer.†
+
+        [p style:`{fontSize: 12}`]†”institutional support” at CMC, HMC and Pomona, “marketing” and “general and administrative” at Scripps and Pitzer.[/p]
     [/Step]
 [/Scroller]
 
@@ -88,10 +92,6 @@ Per-student expenses increased by more than national inflation at CMC, Pomona an
 [var name:"expensesTotalOrPerStudent" value:"per student" /]
 
 *View [Select value:expensesTotalOrPerStudent options:`["total", "per student"]`/] expenses*
-
-[Aside]
-    Harvey Mudd College excluded because financial reports for the college are only available going back to 2017-18
-[/Aside]
 
 [ReLineChart fields:`[expensesTotalOrPerStudent === "total" ? "exp_all" : "exp_per_student", "nat", "la", "ca"]` isCum:true/]
 
@@ -123,15 +123,17 @@ But increasing expenses don't tell the whole story. Tuition increased by more th
 
 [ReLineChart fields:`["tuition", "exp_per_student"]` isCum:`true` isTwoFields:`true`/]
 
-The disparity lies in one last key variable: the amount of financial aid that schools give out.
+The disparity lies in one last key variable: financial aid.
 
-Rather than being listed as an expense, financial aid is subtracted from each school's revenue in financial reporting. Thus, while total revenue growth has [matched spending growth at each 5C school](#appendix), net student revenue has not, and even decreased in 2019-20.
+All 5C schools cover 100% of demonstrated need, according to the schools’ financial aid websites.
 
-**Financial aid, meanwhile, has grown at a greater rate than tuition** at CMC, Pomona and Pitzer, and just under the rate of tuition growth at Scripps.
+Financial aid officers and spokespeople at the 5Cs told TSL that each school has increased their financial aid budget in the past ten years to keep pace with cost of attendance increases.
+
+From 2013-14 to 2019-20, the amount of financial aid awarded each year grew at a faster rate than tuition at CMC, Pomona and Pitzer, and at around the same rate as tuition growth at Scripps.
 
 [ReLineChart fields:`["tuition", "finaid"]` isCum:`true` isTwoFields:`true`/]
 
-All 5C schools cover 100% of demonstrated need, according to the schools’ financial aid websites. For students who receive need-based financial aid, who made up between 38% of the student population at Pitzer to 54% at Pomona in 2019-20, the average **cost of attendance after aid has not increased by nearly as much as tuition.** (phrase that better)
+The average cost of attendance for students who receive need-based financial need has not increased relative to national inflation at Pomona and Scripps since 2013-14, though this is not the case at Pitzer or CMC.
 
 [FullWidth style:`{maxWidth: 1200, margin: "0 auto"}`]
     [TwoColParent]
@@ -152,7 +154,15 @@ All 5C schools cover 100% of demonstrated need, according to the schools’ fina
     [/TwoColParent]
 [/FullWidth]
 
-But even though financial aid has risen with tuition, increasing costs of attendance still have consequences.
+Even when financial aid is available, schools must admit a mix of students with families who are able to afford full tuition with those who have financial need, especially at schools with need-aware admissions policies.
+
+Of the Claremont Colleges, Scripps and Pitzer are need-aware for domestic students, while Pomona, Claremont McKenna, and Harvey Mudd are need-blind. All 5C schools are need-aware for international students.
+
+And just because financial aid is available doesn’t mean that schools will be able to enroll student bodies that can make use of it.
+
+“In the past few years we have been planning for greater financial aid,” said Wendy Shattuck, Assistant Vice President for College Communications at Pitzer, “but the mix of students who selected Pitzer resulted in lower rates of aid.”
+
+And even for students who receive financial aid, increasing costs of attendance still have consequences.
 
 Jada McCoy PO ’24, who receives financial aid from Pomona, noted that the cost of tuition has affected how she conducts herself in classes.
 
@@ -185,7 +195,7 @@ Faulstich echoed Thomas’ concerns.
 Photo by Samson Zhang for *The Student Life*
 [/Aside]
 
-Practically, students have approach college "from an economical standpoint" to some extent, Lee said.
+Practically, students have approached college "from an economical standpoint" to some extent, Lee said.
 
 “I have a friend whose passion lies in English. So she's choosing to pursue English. But also she wants to double major in computer science because she knows that that's eventually what will help her find a job in the future,” said Lee. “It's about finding the balance between pursuing your interests and also being able to find a job.”
 
@@ -201,10 +211,6 @@ Pomona sociology professor Colin Beck agreed that students were prioritizing mor
 He also warned that there are many factors at play beyond increasing tuition.
 
 “Any account that links attitudes and behaviors to tuition cost in isolation from actual prices, affordability, the job market, social inequality, and other broader trends is just a bad analysis,” he said via email.
-
-Regardless, rising costs remain on students’ minds.
-
-“I've pretty much accepted that tuition is going to increase every year,” said Lee.
 
 [LineBreak/]
 
@@ -232,9 +238,9 @@ Each school also **receives an income each year from their endowment funds**. Th
 
 HMC, Scripps and Pitzer are “tuition-dependent” schools, receiving the majority of their revenue from students.
 
-“All schools hope to be endowment-dependent, but that usually comes with age and large donations…most higher ed institutions are tuition dependent, and that impacts decisions on how many students to enroll and how much financial aid we can provide,” said Wendy Shattuck via email.
+“Most higher ed institutions are tuition dependent, and that impacts decisions on how many students to enroll and how much financial aid \[Pitzer College\] can provide,” Shattuck said via email. “All schools hope to be endowment-dependent, but that usually comes with age and large donations.”
 
-SCRIPPS added that some transition here
+Relying on student revenue is appropriate for Scripps College’s mission, according to Warecki.
 
 “As our mission is to educate students the bulk of our revenue is generated from student revenues,” said SCRIPPS. “Diversification of our revenue stream is beneficial but should still be in line with the mission and vision of the College. Growth in endowments, gifts, and other revenue streams all play a part in offsetting cost drivers.”
 
@@ -250,7 +256,7 @@ According to Goldberg, this is true not just for Pomona, but also for all simila
 
 “All of our peer institutions, and any college university in the country, are raising tuition for these very reasons,” he said. “I don't think any school has found a model where \[not increasing tuition\] works.”
 
-In an email to TSL, HMC said that “in recent years, the College has taken steps to reduce, incrementally, the rate of annual increase \[in tuition\].” But the effects of these steps are yet to become visible: since 2013-14 Harvey Mudd’s tuition has increased 30.6%, and its 2021-22 tuition was the highest of the 5C schools.
+In an email to TSL, HMC Director of Public Relations Judy Augsburger said that “in recent years, the College has taken steps to reduce, incrementally, the rate of annual increase \[in tuition\].” But the effects of these steps are yet to become visible: since 2013-14 Harvey Mudd’s tuition has increased 30.6%, and its 2021-22 tuition was the highest of the 5C schools.
 
 Until the 5Cs meaningfully slow tuition increases, increasing costs are likely to continue weighing on students’ experiences.
 
@@ -272,8 +278,11 @@ The following data sources were used:
 - annual Common Data Sets for enrollment and financial aid data
 - school websites, including past versions accessed through the Internet Archive, for cost of attendance data
 
-## THATS THE END EVERYTHING BELOW IS SCRATCH
-
+[LineBreak/]
+[LineBreak/]
+[LineBreak/]
+[LineBreak/]
+[LineBreak/]
 [LineBreak/]
 
 Except at CMC, each school's total annual revenue increased at about the same rate as its expenses. All 5C schools took in at least $XXXX more in revenue than expenses each year from 2013-14 to 2019-20.
