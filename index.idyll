@@ -268,17 +268,31 @@ Until the 5Cs meaningfully slow tuition increases, increasing costs are likely t
 
 ## Appendix
 
-This data visualization piece was created by Samson Zhang using Idyll, React, Recharts and d3. Its source code can be found on GitHub here.
+This data visualization piece was created by [Samson Zhang](https://tsl.news/author/samson-zhang/) using [Idyll](https://idyll-lang.org/docs), React, [Recharts](https://recharts.org/en-US/) and [d3](https://d3js.org/). Its source code can be [found on GitHub here](https://github.com/wwsalmon/tsl-tuition-datavis-2022).
 
-Samson Zhang, Rya Jetha, Mariana Duran, Reia Li and Jenna McMurtry contributed writing to this piece.
+[Samson Zhang](https://tsl.news/author/samson-zhang/), [Rya Jetha](https://tsl.news/author/rya-jetha/), [Mariana Duran](https://tsl.news/author/mariana-duran/), [Reia Li](https://tsl.news/author/reia-li) and [Jenna McMurtry](https://tsl.news/author/jennamcmurtry/) contributed writing to this piece.
 
-All writers as well as Ava Francis-Hall, Julia Schwartz and Katherine Tan contributed interviews and data collection to this piece.
+All writers as well as [Ava Francis-Hall](https://tsl.news/author/afrancisstudents-pitzer-edu/), [Julia Schwartz](https://tsl.news/author/juliaschwartz/) and [Katherine Tan](https://tsl.news/author/katherine-tan/) contributed interviews and data collection to this piece.
 
 The following data sources were used:
 
-- annual school financial reports for spending and revenue data
-- annual Common Data Sets for enrollment and financial aid data
-- school websites, including past versions accessed through the Internet Archive, for cost of attendance data
+Annual school financial reports for spending and revenue data
+
+- [CMC](https://www.cmc.edu/treasurer/annual-reports)
+- [HMC](https://www.hmc.edu/bao/financial-affairs/)
+- [Pitzer](https://www.pitzer.edu/treasurer/documents-policies/)
+- [Pomona](https://www.pomona.edu/administration/treasurer/financial-statements)
+- [Scripps](https://www.scrippscollege.edu/about/glance/financial-reports)
+
+Annual Common Data Sets for enrollment and financial aid data
+
+- [CMC](https://www.cmc.edu/institutional-research/common-data-set)
+- [HMC](https://www.hmc.edu/institutional-research/institutional-statistics/common-data-set/)
+- [Pitzer](https://www.pitzer.edu/institutional-research/common-data-sets/)
+- [Pomona](https://www.pomona.edu/administration/institutional-research/information-center/common-data-set)
+- [Scripps](https://www.scrippscollege.edu/assessir/cds)
+
+School websites, including past versions accessed through the [Internet Archive](http://web.archive.org/), for cost of attendance data
 
 [LineBreak/]
 [LineBreak/]
