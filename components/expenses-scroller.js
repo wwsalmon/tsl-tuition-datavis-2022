@@ -224,6 +224,7 @@ function initialize(svg) {
             const fieldName = b.data.name;
             const schoolName = b.parent.data.name;
             const thisData = expData.find(x => x.school === schoolName);
+            d3.select("#treemapTooltipPlaceholder").style("display", "none");
             d3.select("#treemapTooltipSchool").text(schoolLabels[schoolName]).attr("fill", getColor(schoolLabels[schoolName]));
             d3.select("#treemapTooltipCategory").text(dataLabels[fieldName]);
             d3.select("#treemapTooltipExpPerStudent").text(d3.format("$,")((b.data.value / thisData.enrollment).toFixed(2)));
@@ -261,6 +262,17 @@ function initialize(svg) {
         .text(d => d3.format(".2%")(d.value / expData.find(x => x.school === d.parent.data.name).expenses))
         .style("opacity", 0.5)
         .attr("dx", 4);
+
+    container.append("text")
+        .attr("id", "treemapTooltipPlaceholder")
+        .text("Hover over chart for more details")
+        .attr("dominant-baseline", "text-before-edge")
+        .attr("text-anchor", "end")
+        .style("font-size", 16)
+        .attr("x", graphWidth)
+        .attr("y", 0)
+        .style("display", "none")
+        .style("opacity", 0);
 
     const treemapTooltip = container.append("g").attr("id", "treemapTooltip").style("display", "none").style("opacity", 0);
 
@@ -428,13 +440,11 @@ function step2From3(svg) {
     const container = svg.select("#container");
     const barGroups = svg.selectAll(".barGroup");
 
-    container.select("#treemapTooltip").style("display", "none");
-
     // show singleRect
     fade(container, ".singleRect", 0, true);
 
     // fade treemaps (t1)
-    fade(svg, ".treemapCell");
+    fade(svg, ".treemapCell, #treemapTooltipPlaceholder, #treemapTooltip");
 
     // single rects size down (t2)
     container.selectAll(".singleRect")
@@ -476,9 +486,9 @@ function step3From2(svg) {
 
     fade(container, ".singleRect", 1);
 
-    fade(container, ".treemapCell", 1, true);
+    fade(container, ".treemapCell, #treemapTooltipPlaceholder", 1, true);
 
-    container.select("#treemapTooltip").transition().delay(animDuration).style("display", "block");
+    container.select("#treemapTooltip").transition().delay(animDuration).style("display", "block").style("opacity", 0);
 }
 
 function step3From4(svg) {
