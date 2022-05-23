@@ -46,7 +46,24 @@ class Treemap extends D3Component {
             .data(leaves)
             .enter()
             .append("g")
-            .attr("transform", d => `translate(${d.x0},${d.y0})`);
+            .attr("transform", d => `translate(${d.x0},${d.y0})`)
+            .on("mouseover", (d, b) => {
+                d3.select(d.currentTarget).style("opacity", 0.5);
+                d3.select("#tooltip")
+                    .html(`${dataLabels[b.data.name]}: ${d3.format("$,")(b.data.value)}`)
+                    .style("display", "block")
+                    .style("left", d.pageX + 2 + "px")
+                    .style("top", d.pageY + 2 + "px");
+            })
+            .on("mousemove", d => {
+                d3.select("#tooltip")
+                    .style("left", d.pageX + 2 + "px")
+                    .style("top", d.pageY + 2 + "px");
+            })
+            .on("mouseout", d => {
+                d3.select("#tooltip").style("display", "none");
+                d3.select(d.currentTarget).style("opacity", 1.0);
+            });
 
         cells.append("rect")
             .attr("width", d => d.x1 - d.x0)

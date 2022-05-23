@@ -223,6 +223,7 @@ Each school also **receives an income each year from their endowment funds**. Th
 **Private donations and grants** are the third major revenue source for the 5Cs. Other revenue is received through federal contracts, private contracts and non-endowment investment income.
 
 [FullWidth style:`{padding: "32px 0"}`]
+    [div id:"tooltip" style:`{position: "absolute", display: "none", padding: 8, border: "1px solid #000", backgroundColor: "#fff"}`]tooltip[/div]
     [div style:`{display: "flex", margin: "32px auto", maxWidth: 1000}`]
         [Treemap school:"cmc" year:2020 style:`{width: "55%"}` viewWidth:550/]
         [div style:`{width: "45%"}`]

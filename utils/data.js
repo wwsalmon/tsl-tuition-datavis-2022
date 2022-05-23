@@ -31,7 +31,7 @@ export const schoolLabels = {
 }
 
 export const dataLabels = {
-    rev_other: "Other revenue*",
+    rev_other: "Other revenue",
     rev_students: "Net student revenue",
     rev_endowment: "Endowment income",
     rev_contributions: "Donations and grants",
