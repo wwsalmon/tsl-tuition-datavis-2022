@@ -139,9 +139,10 @@ module.exports = function ReLineChart({fields, school, isTwoFields = false, isCu
     return (
         <div style={{margin: "48px 0"}}>
             <ResponsiveContainer width="100%" height={400}>
-                <LineChart data={data}>
+                <LineChart data={data} margin={{left: 20}}>
                     <XAxis dataKey="year" style={{fontSize: 14}}/>
-                    <YAxis style={{fontSize: 14}} domain={range || ["auto", "auto"]} tickFormatter={axisFormatter}/>
+                    <YAxis style={{fontSize: 14}} domain={range || ["auto", "auto"]} tickFormatter={axisFormatter}
+                           label={isCum ? {value: "Cumulative change", angle: -90, position: "left"} : undefined}/>
                     <Legend wrapperStyle={{fontSize: 14}} iconType="circle" content={({payload}) => {
                         const isSpecial = !school && isTwoFields;
                         const mapContents = isSpecial ? [fields[0], fields[1], ...new Set(payload.map(d => d.dataKey.split(":")[0]))] : payload;
