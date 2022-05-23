@@ -359,18 +359,6 @@ function initialize(svg) {
         .style("opacity", 0.5)
         .attr("x", graphWidth)
         .attr("y", 24);
-
-    treemapTooltip
-        .append("foreignObject")
-        .attr("x", graphWidth - 200)
-        .attr("y", 260)
-        .attr("width", 200)
-        .attr("height", 200)
-        .append("xhtml:p")
-        .attr("style", "font-size: 12px; text-align: right")
-        .attr("xmlns", "http://www.w3.org/1999/xhtml")
-        .attr("id", "treemapTooltipDescript")
-        .text("Academics† are the biggest spending category at every 5C school. This includes faculty and staff salaries, faculty and student research grants, academic department expenses and related spending on The Hive, the Benton Museum and each college’s libraries.");
 }
 
 function step1From2(svg) {
