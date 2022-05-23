@@ -230,7 +230,7 @@ function initialize(svg) {
             d3.select("#treemapTooltipExp").text(d3.format("$,")(b.data.value));
             d3.select("#treemapTooltipPercentage").text(d3.format(".2%")(b.data.value / thisData.expenses));
             d3.select(d.currentTarget).style("opacity", 0.5);
-            d3.select("#treemapTooltip").style("display", "block");
+            d3.select("#treemapTooltip").style("opacity", 1.0);
         })
         .on("mouseout", d => d3.select(d.currentTarget).style("opacity", 1.0));
 
@@ -262,7 +262,7 @@ function initialize(svg) {
         .style("opacity", 0.5)
         .attr("dx", 4);
 
-    const treemapTooltip = container.append("g").attr("id", "treemapTooltip").style("display", "none");
+    const treemapTooltip = container.append("g").attr("id", "treemapTooltip").style("display", "none").style("opacity", 0);
 
     treemapTooltip.append("text")
         .text("Pomona College")
@@ -477,6 +477,8 @@ function step3From2(svg) {
     fade(container, ".singleRect", 1);
 
     fade(container, ".treemapCell", 1, true);
+
+    container.select("#treemapTooltip").transition().delay(animDuration).style("display", "block");
 }
 
 function step3From4(svg) {
