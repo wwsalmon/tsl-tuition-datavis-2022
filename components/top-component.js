@@ -68,6 +68,7 @@ class TopComponent extends D3Component {
             .attr('viewBox', `0 0 ${svgWidth} 700`)
             .style('width', '100%')
             .style('max-width', svgWidth)
+            .style('max-height', "100vh")
             .style("margin", "0 auto")
             .style("display", "block")
             .attr("fill", "#222");
@@ -82,7 +83,7 @@ class TopComponent extends D3Component {
             .style("font-size", 20)
             .attr("fill", "white")
             .attr("x", "50%")
-            .attr("y", 0)
+            .attr("y", 24)
             .attr("text-anchor", "middle")
             .attr("dominant-baseline", "text-before-edge")
             .attr("class", "font-lora");
@@ -93,7 +94,7 @@ class TopComponent extends D3Component {
             .style("font-weight", 700)
             .attr("fill", "white")
             .attr("x", "50%")
-            .attr("y", 24)
+            .attr("y", 48)
             .attr("text-anchor", "middle")
             .attr("dominant-baseline", "text-before-edge")
             .attr("class", "font-lora");
