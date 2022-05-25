@@ -23,11 +23,11 @@ export const expCats = {
 }
 
 export const schoolLabels = {
-    scripps: "Scripps College",
-    pomona: "Pomona College",
-    cmc: "Claremont McKenna College",
-    hmc: "Harvey Mudd College",
-    pitzer: "Pitzer College",
+    scripps: "Scripps",
+    pomona: "Pomona",
+    cmc: "Claremont McKenna",
+    hmc: "Harvey Mudd",
+    pitzer: "Pitzer",
 }
 
 export const dataLabels = {
