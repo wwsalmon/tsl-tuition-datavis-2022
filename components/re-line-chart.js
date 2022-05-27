@@ -40,7 +40,7 @@ function getFieldName(field, isSpecial = false) {
     }
 }
 
-module.exports = function ReLineChart({fields, school, isTwoFields = false, isCum = false, range, formatPercentString, formatMoneyString, numYears = 7, include2021 = false}) {
+module.exports = function ReLineChart({fields, school, isTwoFields = false, isCum = false, range, formatPercentString, formatMoneyString, numYears = 7, include2021 = false, showPerYear = false}) {
     let data;
 
     if (school) {
@@ -182,25 +182,41 @@ module.exports = function ReLineChart({fields, school, isTwoFields = false, isCu
                             if (payload.length) {
                                 const year = +payload[0].payload.year.substring(5, 9);
                                 const thisOldData = oldData.find(d => d.year === year);
+                                const prevYear = oldData.find(d => d.year + 1 === year);
 
                                 return (
                                     <div style={{padding: 12, backgroundColor: "white", border: "1px solid #ccc"}}>
                                         <div style={{marginBottom: 8}}><span>{label}</span></div>
-                                        {payload.map((item, i) => {
-                                            const field = (!school && isTwoFields) ?
-                                                Object.keys(dataLabels).find(key => dataLabels[key] === item.name.split(":")[0]) + "/" +
-                                                Object.keys(dataLabels).find(key => dataLabels[key] === item.name.split(": ")[1]) :
-                                                Object.keys(dataLabels).find(key => dataLabels[key] === item.name);
-                                            const thisOldValue = thisOldData[field];
+                                        <table>
+                                            <tr>
+                                                <th>School</th>
+                                                <th>Cum. change</th>
+                                                <th>Value</th>
+                                                {showPerYear && prevYear && (
+                                                    <th>Year change</th>
+                                                )}
+                                            </tr>
+                                            {payload.map((item, i) => {
+                                                const field = (!school && isTwoFields) ?
+                                                    Object.keys(dataLabels).find(key => dataLabels[key] === item.name.split(":")[0]) + "/" +
+                                                    Object.keys(dataLabels).find(key => dataLabels[key] === item.name.split(": ")[1]) :
+                                                    Object.keys(dataLabels).find(key => dataLabels[key] === item.name);
+                                                const thisOldValue = thisOldData[field];
+                                                const lastYearValue = prevYear && prevYear[field];
+                                                const perYearPercentage = prevYear && ((thisOldValue - lastYearValue) / lastYearValue);
 
-                                            return (
-                                                <div style={{color: (isTwoFields && !school) ? getColor(item.name.split(":")[0]) : getColor(item.name), marginTop: 8}} key={field}>
-                                                    <span>
-                                                        {item.name}: {formatterPercent(item.value.toString())} ({formatterMoney(thisOldValue)})
-                                                    </span>
-                                                </div>
-                                            );
-                                        })}
+                                                return (
+                                                    <tr style={{color: (isTwoFields && !school) ? getColor(item.name.split(":")[0]) : getColor(item.name), marginTop: 8}} key={field}>
+                                                        <td>{item.name}</td>
+                                                        <td>{formatterPercent(item.value.toString())}</td>
+                                                        <td>{formatterMoney(thisOldValue)}</td>
+                                                        {showPerYear && prevYear && (
+                                                            <td>{formatterPercent(perYearPercentage)}</td>
+                                                        )}
+                                                    </tr>
+                                                );
+                                            })}
+                                        </table>
                                     </div>
                                 );
                             }

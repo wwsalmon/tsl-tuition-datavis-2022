@@ -42,7 +42,7 @@ Since the 2013-14 school year, tuition has increased by more than 29 percent at 
 
 [div style:`{margin: "96px 0"}`]
 
-[ReLineChart fields:`["tuition","la","nat","ca"]` isCum:true numYears:10/]
+[ReLineChart fields:`["tuition","la","nat","ca"]` isCum:true numYears:10 showPerYear:`true`/]
 
 [/div]
 
