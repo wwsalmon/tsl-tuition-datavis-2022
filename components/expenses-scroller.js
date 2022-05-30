@@ -74,6 +74,15 @@ const treemapData = Object.fromEntries(splitData.map(d => {
     ];
 }));
 
+const squareY = (school) => ["pomona", "cmc"].includes(school) ? 0 : splitData.find(d => d.school === "pomona").squareSide * treemapScale + treemapPadding;
+const squareX = (school) => ({
+    "pomona": 0,
+    "cmc": treemapScale * splitData.find(d => d.school === "pomona").squareSide + treemapPadding,
+    "hmc": 0,
+    "scripps": treemapScale * splitData.find(d => d.school === "hmc").squareSide + treemapPadding,
+    "pitzer": treemapScale * (splitData.find(d => d.school === "hmc").squareSide + splitData.find(d => d.school === "scripps").squareSide) + 2 * treemapPadding,
+}[school]);
+
 function fade(container, selector, delayCount = 0, fadeIn = false) {
     const selection = container.selectAll(selector);
 
@@ -96,6 +105,16 @@ function alignBarGroupsForStep2(barGroups, delayCount = 0) {
         .delay(delayCount * animDuration)
         .duration(animDuration)
         .style("transform", d => `translate(${xScale(d.school)}px, ${(graphHeight - d3.max(splitData.map(d => d.squareSide)) * squareScale) / 2}px)`);
+}
+
+function alignBarGroupsForStep3(barGroups, delayCount = 0) {
+    barGroups
+        .data(splitData)
+        .join("g")
+        .transition()
+        .delay(delayCount * animDuration)
+        .duration(animDuration)
+        .style("transform", d => `translate(${squareX(d.school)}px, ${squareY(d.school)}px)`);
 }
 
 function highlightCells(barGroups, values = []) {
@@ -361,6 +380,75 @@ function initialize(svg) {
         .attr("y", 24);
 }
 
+function step1Any(svg) {
+    svg.select("#title").text("2019-20 total expenses");
+
+    const container = svg.select("#container");
+    const barGroups = svg.selectAll(".barGroup");
+
+    fade(container, ".treemapCell, #treemapTooltipPlaceholder, #treemapTooltip, .squareLabel");
+
+    container.selectAll(".singleRect")
+        .transition()
+        .duration(animDuration)
+        .style("transform", `scale(1)`);
+
+    barGroups
+        .data(splitData)
+        .join("g")
+        .transition()
+        .duration(animDuration)
+        .style("transform", d => `translate(${xScale(d.school)}px, ${d.startHeight}px)`);
+
+    fade(svg, ".rectLabel, .xAxis, .singleRect, #title", 0, true);
+}
+
+function step2Any(svg) {
+    svg.select("#title").text("2019-20 expenses per student");
+
+    const container = svg.select("#container");
+    const barGroups = svg.selectAll(".barGroup");
+
+    fade(container, ".treemapCell, #treemapTooltipPlaceholder, #treemapTooltip, .rectLabel, .mainRect, .xAxis");
+
+    alignBarGroupsForStep2(barGroups);
+
+    container.selectAll(".singleRect")
+        .transition()
+        .duration(animDuration)
+        .style("transform", `scale(${squareScale})`);
+
+    fade(svg, ".singleRect, .squareLabel, #title", 0, true);
+}
+
+function step3Any(svg) {
+    const container = svg.select("#container");
+    const barGroups = svg.selectAll(".barGroup");
+
+    fade(container, "#title, .rectLabel, .xAxis, .singleRect, .mainRect");
+
+    alignBarGroupsForStep3(barGroups);
+
+    fade(container, ".treemapCell, #treemapTooltipPlaceholder", 0, true);
+
+    container.select("#treemapTooltip").transition().style("display", "block").style("opacity", 0);
+}
+
+function step4Any(svg) {
+    step3Any(svg);
+    step4(svg);
+}
+
+function step5Any(svg) {
+    step3Any(svg);
+    step5(svg);
+}
+
+function step6Any(svg) {
+    step3Any(svg);
+    step6(svg);
+}
+
 function step1From2(svg) {
     svg.select("#title").text("2019-20 total expenses");
 
@@ -454,21 +542,7 @@ function step3From2(svg) {
 
     fade(svg, ".squareLabel, #title");
 
-    const squareY = (school) => ["pomona", "cmc"].includes(school) ? 0 : splitData.find(d => d.school === "pomona").squareSide * treemapScale + treemapPadding;
-    const squareX = (school) => ({
-        "pomona": 0,
-        "cmc": treemapScale * splitData.find(d => d.school === "pomona").squareSide + treemapPadding,
-        "hmc": 0,
-        "scripps": treemapScale * splitData.find(d => d.school === "hmc").squareSide + treemapPadding,
-        "pitzer": treemapScale * (splitData.find(d => d.school === "hmc").squareSide + splitData.find(d => d.school === "scripps").squareSide) + 2 * treemapPadding,
-    }[school]);
-
-    barGroups
-        .data(splitData)
-        .join("g")
-        .transition()
-        .duration(animDuration)
-        .style("transform", d => `translate(${squareX(d.school)}px, ${squareY(d.school)}px)`);
+    alignBarGroupsForStep3(barGroups);
 
     container.selectAll(".singleRect").transition().duration(animDuration).style("transform", `scale(${treemapScale})`);
 
@@ -515,15 +589,20 @@ class ExpensesScroller extends D3Component {
             .style("height", "100vh");
 
         initialize(svg);
+
+        if (step > -1) eval(`step${step + 1}Any(svg)`);
     }
 
     update(props, oldProps) {
         const {step} = props;
         const {step: oldStep} = oldProps;
 
-        if (step > 2) return eval(`step${step + 1}(this.svg)`);
+        const funcToEval = `step${step + 1}${step > 2 ? "" : `From${oldStep + 1}`}(this.svg)`;
 
-        if (Math.abs(step - oldStep) === 1 && oldStep !== -1) eval(`step${step + 1}From${oldStep + 1}(this.svg)`);
+        console.log(step, oldStep, funcToEval);
+
+        if (Math.abs(step - oldStep) === 1 && oldStep !== -1) eval(funcToEval);
+        else eval(`step${step + 1}Any(this.svg)`);
     }
 }
 
