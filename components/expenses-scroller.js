@@ -599,8 +599,6 @@ class ExpensesScroller extends D3Component {
 
         const funcToEval = `step${step + 1}${step > 2 ? "" : `From${oldStep + 1}`}(this.svg)`;
 
-        console.log(step, oldStep, funcToEval);
-
         if (Math.abs(step - oldStep) === 1 && oldStep !== -1) eval(funcToEval);
         else eval(`step${step + 1}Any(this.svg)`);
     }
