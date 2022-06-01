@@ -42,10 +42,6 @@ The increases are in line with a median tuition increase of 3.7 percent across â
 
 Since the 2013-14 school year, tuition has increased by more than 29 percent at each of the 5Cs, outpacing national, Los Angeles County and California inflation rates in the same time period.
 
-[Aside]
-Consumer price indices (CPI) measure the change...larkin pls help with rest of thi
-[/Aside]
-
 [div style:`{margin: "96px 0"}`]
 
 [ReLineChart fields:`["tuition","la","nat","ca"]` isCum:true numYears:10 showPerYear:`true`/]
