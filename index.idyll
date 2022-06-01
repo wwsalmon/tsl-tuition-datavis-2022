@@ -1,8 +1,9 @@
 [meta title:"Tsl Tuition Datavis 2022" description:"Short description of your project" /]
 
-[FullWidth style:`{width: "100%", height: "100vh", backgroundColor: "#222", color: "white", display: "flex", alignItems: "center"}`]
+[FullWidth style:`{width: "100%", height: "100vh", position: "relative", backgroundColor: "#222", color: "white", display: "flex", alignItems: "center", zIndex: 3}`]
 
-   [TopComponent/]
+    [TopLogo/]
+    [TopComponent/]
 
 [/FullWidth]
 
@@ -22,7 +23,11 @@ But owing to the "burden of having \[a\] family contribution being higher than \
 
 “Pursuing your intellectual curiosity is an essential part of college,” she said. But to manage the financial restraints of a Pomona education Lee felt that she has no other choice than to view her college experience through an economical standpoint, and has wondered how she might have directed her college studies differently if she wasn’t burdened by financial stressors.
 
-[div style:`{textAlign: "center", margin: "192px 0"}`]
+[div style:`{width: "100%", height: 192}`/]
+
+[Navbar/]
+
+[div style:`{textAlign: "center", marginBottom: 192}`]
 
 [h1 className:"font-lora" style:`{fontSize: 64, textAlign: "center"}`]THE COST OF INCREASING COSTS[/h1]
 

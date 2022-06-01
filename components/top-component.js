@@ -68,8 +68,8 @@ class TopComponent extends D3Component {
             .attr('viewBox', `0 0 ${svgWidth} 700`)
             .style('width', '100%')
             .style('max-width', svgWidth)
-            .style('max-height', "100vh")
-            .style("margin", "0 auto")
+            .style('max-height', "calc(100vh - 32px)")
+            .style("margin", "32px auto 0 auto")
             .style("display", "block")
             .attr("fill", "#222");
 
