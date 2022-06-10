@@ -100,10 +100,6 @@ TSL reviewed the past eight years of each 5C school’s audited financial statem
 
 Per-student expenses increased by more than national inflation at CMC, Pomona and Scripps from 2013-14 to 2019-20. At Pitzer, per-student spending increased at just under the rate of national inflation.
 
-[Aside]
-    Harvey Mudd College excluded because financial reports for the college are only available going back to 2017-18
-[/Aside]
-
 [var name:"expensesTotalOrPerStudent" value:"per student" /]
 
 *View [Select value:expensesTotalOrPerStudent options:`["total", "per student"]`/] expenses*
