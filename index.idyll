@@ -108,11 +108,11 @@ Per-student expenses increased by more than national inflation at all 5C schools
 
 [ReLineChart fields:`[expensesTotalOrPerStudent === "total" ? "exp_all" : "exp_per_student", "nat", "la", "ca"]` isCum:true/]
 
-Mary Lou Woods, assistant vice president and associate treasurer of Pomona College, said that rising expectations for school services have been a key driver of increased spending.
+Mary Lou Woods, assistant vice president and associate treasurer of Pomona, said that rising expectations for school services drove increased spending.
 
 “The expectations of what the world wants us to provide continue to rise,” Woods said. “As students and families are weighing their options of different institutions, they’re \[asking\], is there a health and wellness center? Is there a rock climbing wall? There is a desire to have a very hands on student affairs \[and support in addition to\] the instruction side.”
 
-Rachael Warecki, a spokesperson for Scripps, also pointed to increased co-curricular spending as a key reason for increasing expenses.
+Rachael Warecki, a spokesperson for Scripps, pointed to increased co-curricular spending as one reason for increasing expenses.
 
 “Costs related to the addition of a new Residence Hall, together with major renovations to several other Residence Halls, including the addition of air conditioning and addressing ADA accessibility, was a major driver of costs in co-curricular expenditures for \[Scripps\] College over recent years,” she said.
 
@@ -128,7 +128,7 @@ Academic and institutional support expenses have also increased.
 
 According to Rob Goldberg, Pomona Chief Operating Officer and Treasurer, part of the increase stems from the need to provide competitive salaries.
 
-“Over 50% of our budget covers salaries and benefits for our faculty and staff and each year we increase compensation to keep up with higher costs of living and to recruit and attract the best faculty and staff we can,” he said in an email.
+“Over 50 percent of our budget covers salaries and benefits for our faculty and staff, and each year we increase compensation to keep up with higher costs of living and to recruit and attract the best faculty and staff we can,” he said in an email.
 
 Judy Augsburger, a spokesperson for Harvey Mudd, said that a [2013 ten-year growth plan](https://www.hmc.edu/growth/) was a key reason for the steepness of the college’s tuition increases since 2011-12. The plan called for increasing faculty, staff and facility resources to accommodate 900 students by 2023. Harvey Mudd [had 902 full-time undergraduate students](https://www.hmc.edu/institutional-research/institutional-statistics/institutional-statistics-students/student-enrollment/) in 2021-22, up from 777 in 2011-12.
 
@@ -138,7 +138,7 @@ Broadly, “people, insurance, food and utilities” were responsible for the gr
 
 ## Financial aid alleviates some, but not all, consequences of rising costs
 
-But increasing expenses don’t tell the whole story. Tuition increased more than expenses per student at all 5C schools except Claremont McKenna from 2013-14 to 2019-20.
+Increasing expenses don’t tell the whole story. Tuition increased more than expenses per student at all 5C schools except Claremont McKenna from 2013-14 to 2019-20.
 
 [ReLineChart fields:`["tuition", "exp_per_student"]` isCum:`true` isTwoFields:`true`/]
 
@@ -146,11 +146,11 @@ Financial aid officers and spokespeople at the 5Cs told TSL that each school has
 
 All 5C schools cover 100 percent of demonstrated need, according to the schools’ financial aid websites.
 
-From 2013-14 to 2019-20, the amount of financial aid awarded each year grew at a faster rate than tuition at CMC, Pomona and Pitzer. At Scripps, financial aid increased by less than tuition in the same time period.
+From 2013-14 to 2019-20, the amount of financial aid awarded each year grew at a faster rate than tuition at all 5C schools except Scripps. At Scripps, financial aid increased by less than tuition in the same time period.
 
 [ReLineChart fields:`["tuition", "finaid"]` isCum:`true` isTwoFields:`true`/]
 
-The average cost of attendance for students who receive need-based financial aid has not increased relative to national inflation at Pomona and Scripps since 2013-14, though this is not the case at Pitzer or CMC.
+The average cost of attendance for students who receive need-based financial aid has not increased relative to national inflation at Pomona and Scripps since 2013-14, though this is not the case at Pitzer, Claremont McKenna or Harvey Mudd.
 
 [FullWidth style:`{maxWidth: 1200, margin: "0 auto"}`]
     [TwoColParent]
@@ -173,9 +173,7 @@ The average cost of attendance for students who receive need-based financial aid
 
 Even when financial aid is available, schools admit a mix of students with families who are able to afford full tuition with those who have financial need, especially at schools with need-aware admissions policies.
 
-Harvey Mudd, CMC and Pomona have need-blind policies for domestic students, but are need-aware for international applicants. Both Scripps and Pitzer have need-aware policies in place for all applicants, meaning those who can pay full tuition may be favored in the application process over those who cannot.
-
-Of the Claremont Colleges, Scripps and Pitzer are need-aware for domestic students, while Pomona, Claremont McKenna, and Harvey Mudd are need-blind. All 5C schools are need-aware for international students.
+Harvey Mudd, CMC and Pomona have need-blind policies for domestic students, but are need-aware for international applicants. Both Scripps and Pitzer have need-aware policies in place for all applicants, meaning those who [can pay full tuition may be favored](https://www.nytimes.com/2019/03/15/your-money/college-admissions-wealth.html) in the application process over those who cannot.
 
 And just because financial aid is available doesn’t mean that schools will be able to enroll student bodies that make use of it.
 
@@ -233,13 +231,13 @@ Colin Beck has taught at Pomona since 2009. Photo courtesy of Pomona College
 
 He also warned that there are many factors at play beyond increasing tuition.
 
-“Any account that links attitudes and behaviors to tuition cost in isolation from actual prices, affordability, the job market, social inequality, and other broader trends is just a bad analysis,” he said via email.
+“Any account that links attitudes and behaviors to tuition cost in isolation from actual prices, affordability, the job market, social inequality and other broader trends is just a bad analysis,” Beck said.
 
 [LineBreak/]
 
-## Is it necessary for tuition to continue increasing so steeply?
+## Is it necessary for tuition to continue increasing this steeply?
 
-Net student revenue —  the cost of tuition, room and board for each student minus the financial aid provided to them — is only one of several sources of revenue for 5C schools.
+Net student revenue —  the cost of tuition, room and board for each student minus the financial aid provided to them — is one of several sources of revenue for the 5Cs.
 
 Each school also receives an annual income from their endowment funds. This income is equivalent to about four percent of a four-year rolling average of the endowment fund’s value at each of the 5C schools, though the exact percentage varies by school.
 
